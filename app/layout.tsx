@@ -9,15 +9,17 @@ const ENTITY_SENTENCE = siteDescription;
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Cyberwall — Kerala Police Public Safety Initiative",
+    default: "Cyberwall — Kerala Police's AI-Powered Digital Safety Assistant",
     template: "%s | Cyberwall",
   },
   description: ENTITY_SENTENCE,
   keywords: [
     "Cyberwall",
     "Kerala Police",
+    "digital safety assistant",
     "cyber fraud helpline",
     "scam link checker",
+    "trust score",
     "APK safety check",
     "phishing detection",
     "online fraud reporting Kerala",
@@ -28,14 +30,14 @@ export const metadata: Metadata = {
     canonical: siteUrl,
   },
   openGraph: {
-    title: "Cyberwall — Kerala Police Public Safety Initiative",
+    title: "Cyberwall — Kerala Police's AI-Powered Digital Safety Assistant",
     description: ENTITY_SENTENCE,
     url: siteUrl,
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Cyberwall — Kerala Police Public Safety Initiative",
+    title: "Cyberwall — Kerala Police's AI-Powered Digital Safety Assistant",
     description: ENTITY_SENTENCE,
   },
 };
@@ -56,7 +58,7 @@ const ORG_JSON_LD = {
 const SERVICE_JSON_LD = {
   "@context": "https://schema.org",
   "@type": "Service",
-  serviceType: "Cyber fraud risk assessment",
+  serviceType: "AI-powered digital safety verification",
   provider: {
     "@type": "GovernmentOrganization",
     name: "Kerala Police",

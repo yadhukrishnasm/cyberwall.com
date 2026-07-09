@@ -11,16 +11,18 @@ export default function FaqPreview() {
   const items = ALL_FAQS.slice(0, PREVIEW_COUNT);
 
   return (
-    <section className="border-t border-neutral-200 py-20 md:py-28">
+    <section className="py-20 md:py-28">
       <Container>
         <Reveal>
           <SectionHeading eyebrow="FAQ" title="Questions people usually ask." />
         </Reveal>
 
-        <div className="mt-10 divide-y divide-neutral-200 border-t border-neutral-200">
+        <div className="mt-10 space-y-3">
           {items.map((item, i) => (
             <Reveal key={item.question} delay={i * 60}>
-              <FaqItem question={item.question} answer={item.answer} />
+              <div className="rounded-3xl bg-white px-6 md:px-8">
+                <FaqItem question={item.question} answer={item.answer} />
+              </div>
             </Reveal>
           ))}
         </div>
@@ -28,7 +30,7 @@ export default function FaqPreview() {
         <Reveal delay={280}>
           <Link
             href="/faq"
-            className="mt-8 inline-block text-sm font-medium text-neutral-950 underline decoration-neutral-300 underline-offset-4 transition-colors hover:decoration-neutral-950"
+            className="mt-8 inline-block text-base font-semibold text-brand underline decoration-brand/30 underline-offset-4 transition-colors hover:decoration-brand"
           >
             View all FAQs
           </Link>

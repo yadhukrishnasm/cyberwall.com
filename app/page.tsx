@@ -1,13 +1,17 @@
-import AccessChannels from "@/components/sections/access-channels";
-import Checks from "@/components/sections/checks";
-import CtaBanner from "@/components/sections/cta-banner";
+import Emergency from "@/components/sections/emergency";
 import FaqPreview from "@/components/sections/faq-preview";
+import FinalCta from "@/components/sections/final-cta";
 import Footer from "@/components/sections/footer";
 import Hero from "@/components/sections/hero";
-import Response from "@/components/sections/response";
-import Stats from "@/components/sections/stats";
+import HowCyberwallWorks from "@/components/sections/how-cyberwall-works";
+import ScamsScaling from "@/components/sections/scams-scaling";
+import TrustRibbon from "@/components/sections/trust-ribbon";
+import VerifyChannels from "@/components/sections/verify-channels";
+import WhatCanISend from "@/components/sections/what-can-i-send";
+import WhyCyberwall from "@/components/sections/why-cyberwall";
 import { Navbar } from "@/components/structure/navbar";
 import { StructuredData } from "@/components/structured-data";
+import { PlatformModal } from "@/components/ui/platform-modal";
 import { siteUrl, siteName, siteDescription } from "@/lib/site";
 
 const WEBSITE_JSON_LD = {
@@ -25,14 +29,18 @@ export default function HomePage() {
       <Navbar />
       <main>
         <Hero />
-        <AccessChannels />
-        <Response />
-        <Checks />
-        <Stats />
+        <TrustRibbon />
+        <WhyCyberwall />
+        <WhatCanISend />
+        <VerifyChannels />
+        <HowCyberwallWorks />
+        <ScamsScaling />
+        <Emergency />
         <FaqPreview />
-        <CtaBanner />
+        <FinalCta />
       </main>
       <Footer />
+      <PlatformModal />
     </>
   );
 }

@@ -2,14 +2,13 @@ import type { ComponentType, SVGProps } from "react";
 import { cn } from "@/lib/utils";
 
 const TINTS = {
-  1: "bg-box-1",
-  2: "bg-box-2",
-  3: "bg-box-3",
+  1: "bg-tint-blue",
+  2: "bg-tint-cyan",
+  3: "bg-tint-lavender",
 } as const;
 
-// One tile in the checks collage. Tiles sit edge-to-edge in a variable-
-// span grid (see checks.tsx) — swap the background/icon block for a
-// real <img>/<video src="....gif"> once the prototype capture is ready,
+// One tile in a bento grid. Swap the icon/gradient block for a real
+// <img>/<video src="....gif"> once the prototype capture is ready —
 // the title/description overlay can stay as-is.
 export function CollageTile({
   icon: Icon,
@@ -27,18 +26,20 @@ export function CollageTile({
   return (
     <div
       className={cn(
-        "relative flex h-full flex-col justify-between overflow-hidden p-5",
+        "relative flex h-full flex-col justify-between overflow-hidden rounded-3xl p-6",
         TINTS[tint],
         className,
       )}
     >
-      <div className="absolute -right-8 -bottom-10 h-32 w-32 rounded-full bg-accent/10 blur-2xl" />
-      <Icon className="relative h-6 w-6 text-neutral-950/70" strokeWidth={1.5} />
+      <div className="absolute -right-10 -bottom-12 h-40 w-40 rounded-full bg-brand/15 blur-3xl" />
+      <span className="relative flex h-12 w-12 items-center justify-center rounded-2xl bg-white shadow-sm">
+        <Icon className="h-6 w-6 text-brand" strokeWidth={1.5} />
+      </span>
       <div className="relative">
-        <h3 className="font-nohemi text-sm font-semibold text-neutral-950">
+        <h3 className="font-nohemi line-clamp-2 text-base leading-snug font-bold text-neutral-950 md:text-lg">
           {title}
         </h3>
-        <p className="mt-1 text-xs leading-relaxed text-neutral-700/80 line-clamp-2">
+        <p className="mt-1.5 line-clamp-2 text-sm leading-relaxed text-neutral-600">
           {description}
         </p>
       </div>

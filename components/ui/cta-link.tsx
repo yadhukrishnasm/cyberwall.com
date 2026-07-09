@@ -3,12 +3,12 @@ import { cn } from "@/lib/utils";
 
 const VARIANT_CLASSES = {
   primary:
-    "rounded-full bg-neutral-950 px-6 py-3 text-sm font-medium text-white transition-opacity hover:opacity-85",
+    "brand-gradient rounded-full px-7 py-3.5 text-base font-semibold text-white shadow-lg shadow-brand/25 transition-all hover:opacity-90 hover:shadow-brand/35",
   secondary:
-    "rounded-full border border-neutral-300 px-6 py-3 text-sm font-medium text-neutral-950 transition-colors hover:border-neutral-950",
-  dark: "rounded-full bg-white px-6 py-3 text-sm font-medium text-neutral-950 transition-opacity hover:opacity-85",
+    "rounded-full border-2 border-neutral-300 px-7 py-3.5 text-base font-semibold text-neutral-950 transition-colors hover:border-brand hover:text-brand",
+  dark: "rounded-full bg-white px-7 py-3.5 text-base font-semibold text-neutral-950 transition-opacity hover:opacity-85",
   underline:
-    "text-sm font-medium text-neutral-950 underline decoration-neutral-300 underline-offset-4 transition-colors hover:decoration-neutral-950",
+    "text-base font-medium text-neutral-950 underline decoration-neutral-300 underline-offset-4 transition-colors hover:decoration-brand hover:text-brand",
 } as const;
 
 export function CtaLink({

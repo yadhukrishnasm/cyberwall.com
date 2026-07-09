@@ -6,43 +6,29 @@ export const FAQ_GROUPS: FAQCategory[] = [
     category: "About Cyberwall",
     items: [
       {
-        question: "What is Cyberwall?",
-        answer:
-          "Cyberwall is an official Kerala Police public safety initiative that helps citizens verify suspicious links, APK files, phone numbers, bank accounts, emails, and messages, and returns an instant risk assessment.",
-      },
-      {
-        question: "Who runs Cyberwall?",
-        answer:
-          "Cyberwall is developed and operated under Kerala Police, Cyber Division, as part of its mission to reduce digital financial fraud.",
-      },
-      {
         question: "Is Cyberwall free?",
-        answer: "Yes. It is a public safety initiative, free to use.",
+        answer:
+          "Yes. Cyberwall is a free public safety initiative from Kerala Police — there's no cost, subscription, or app to buy.",
       },
       {
-        question: "Do I need to install an app to use Cyberwall?",
+        question: "Can I just ask Cyberwall a question?",
         answer:
-          "No. There are no new apps to download and no complex setup — you simply forward suspicious content to Cyberwall on WhatsApp or Telegram, or use the official Kerala Police PolApp.",
+          "Yes. You don't need a strict format. Explain your situation in your own words — in English or Malayalam — and Cyberwall will work out what to verify and how to help.",
       },
     ],
   },
   {
-    category: "Capabilities",
+    category: "What you can send",
     items: [
       {
-        question: "What can I forward to Cyberwall?",
+        question: "What can I send?",
         answer:
-          "You can forward suspicious links (URLs), APK files, phone numbers, bank account numbers, emails, and SMS or chat messages.",
+          "Websites, SMS, phone numbers, emails, bank details, APK files, and IP addresses — sent as typed text, a screenshot or image, or a voice note.",
       },
       {
-        question: "What checks does Cyberwall run?",
+        question: "What happens to screenshots and voice notes?",
         answer:
-          "Cyberwall runs over 40 security checks across 6 input types — including domain age and reputation, APK permissions and Play Store matching, mail server and blacklist checks, TRAI DLT registry checks for SMS, and cross-referencing bank accounts and phone numbers against police scam databases.",
-      },
-      {
-        question: "What does Cyberwall return after a check?",
-        answer:
-          "A trust score from 0–100, a clear verdict (Safe / Suspicious / High Risk), and a detailed report with the reasoning behind the result.",
+          "Cyberwall reads screenshots and transcribes voice notes to understand what you're asking about, then runs the relevant checks. They're used only to generate your assessment, following Kerala Police's data-handling guidelines.",
       },
     ],
   },
@@ -50,18 +36,14 @@ export const FAQ_GROUPS: FAQCategory[] = [
     category: "How it works",
     items: [
       {
-        question: "How do I use Cyberwall on WhatsApp?",
+        question: "How does Cyberwall respond?",
         answer:
-          "Forward the suspicious link, file, or message to the Cyberwall WhatsApp number, +91 94979 64163, and it will return a risk assessment.",
+          "Cyberwall analyzes what you send using its verification engine, then replies with a Trust Score, a clear explanation of what it found, and recommended next steps.",
       },
       {
-        question: "Can I use Cyberwall on Telegram?",
-        answer: "Yes, message the Cyberwall bot on Telegram at @Cyber_wall_bot.",
-      },
-      {
-        question: "Is Cyberwall integrated with the official Kerala Police app?",
+        question: "Does every response include a Trust Score?",
         answer:
-          "Yes. Cyberwall is integrated with the official Kerala Police PolApp for direct reporting, available on iOS and Android.",
+          "Every response backed by a relevant analysis includes a Trust Score out of 100, so you have a single, unambiguous number to act on — alongside the plain-language explanation.",
       },
     ],
   },
@@ -71,32 +53,27 @@ export const FAQ_GROUPS: FAQCategory[] = [
       {
         question: "Does Cyberwall store my messages?",
         answer:
-          "Cyberwall analyzes the input you send to return a result. Data retention follows Kerala Police guidelines intended to protect user privacy, with aggregate trend analysis only. Final data retention policy is pending.",
+          "Cyberwall processes what you send to generate a result. Data retention follows Kerala Police guidelines intended to protect user privacy, with aggregate trend analysis only. Final data retention policy is pending.",
       },
       {
-        question: "Is the result from Cyberwall legally binding?",
+        question: "Is the result legally binding?",
         answer:
           "No. Cyberwall provides advisory risk assessments only — it is not a legal determination.",
       },
       {
         question: "Can Cyberwall make mistakes?",
         answer:
-          "Yes. While it uses multiple advanced checks, no automated system is 100% accurate. Always exercise independent judgment alongside Cyberwall's assessment.",
+          "Yes. While it runs 35+ automated verification checks, no automated system is 100% accurate. Always exercise independent judgment alongside Cyberwall's assessment.",
       },
     ],
   },
   {
-    category: "Getting started / already scammed",
+    category: "Already scammed",
     items: [
       {
-        question: "What should I do if I've already transferred money to a scammer?",
+        question: "What should I do if I've already transferred money?",
         answer:
-          "Immediately call the national cybercrime helpline, 1930, or report it at cybercrime.gov.in. The sooner you report, the higher your chances of recovery.",
-      },
-      {
-        question: "How do I get started with Cyberwall?",
-        answer:
-          "Text +91 94979 64163 on WhatsApp, message @Cyber_wall_bot on Telegram, or use the official Kerala Police PolApp to start verifying suspicious content.",
+          "Stop any further payments, call the national cybercrime helpline 1930 immediately, and report the incident as soon as possible at cybercrime.gov.in. The sooner you report, the higher your chances of recovery.",
       },
     ],
   },

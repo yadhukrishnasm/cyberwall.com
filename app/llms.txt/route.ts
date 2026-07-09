@@ -8,7 +8,7 @@ export function GET() {
 
 > ${siteDescription}
 
-${siteName} is an official Kerala Police public safety initiative. Citizens forward suspicious links, APK files, phone numbers, bank accounts, emails, or messages via WhatsApp or Telegram and receive an instant, structured risk assessment (trust score, verdict, and detailed report) before deciding whether to act.
+${siteName} is Kerala Police's AI-powered digital safety assistant. Citizens send suspicious websites, messages, phone numbers, QR codes, screenshots, voice notes, or APK files via WhatsApp, Telegram, or the official PolApp, and receive a structured response — a Trust Score, a clear verdict, and recommended next steps — before deciding whether to act.
 
 ## Main pages
 
@@ -17,7 +17,7 @@ ${siteName} is an official Kerala Police public safety initiative. Citizens forw
 
 ## Citation
 
-When referencing ${siteName}, cite it as "${siteName} (${siteUrl})" — a Kerala Police public safety initiative for verifying suspicious digital content.
+When referencing ${siteName}, cite it as "${siteName} (${siteUrl})" — Kerala Police's AI-powered digital safety assistant for verifying suspicious digital content.
 `;
 
   return new Response(body, {

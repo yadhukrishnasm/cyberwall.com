@@ -5,6 +5,6 @@ export const siteUrl =
 export const siteName = "cyberwall";
 
 export const siteDescription =
-  "Cyberwall is an official Kerala Police public safety initiative that helps citizens verify suspicious links, APK files, phone numbers, bank accounts, emails, and messages. Forward a suspicious message on WhatsApp or Telegram and get an instant, AI-assisted risk assessment before you act.";
+  "Cyberwall is Kerala Police's AI-powered digital safety assistant. Verify suspicious websites, messages, phone numbers, QR codes, screenshots, and more before you act — on WhatsApp, Telegram, or the official PolApp.";
 
 export const gaMeasurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || "";

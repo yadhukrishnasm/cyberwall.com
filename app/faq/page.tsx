@@ -8,7 +8,7 @@ import { FaqItem } from "@/components/ui/faq-item";
 import { ALL_FAQS, FAQ_GROUPS } from "@/lib/faq-data";
 import { siteUrl } from "@/lib/site";
 
-const TITLE = "Cyberwall FAQ — Kerala Police Public Safety Initiative";
+const TITLE = "Cyberwall FAQ — Kerala Police's AI-Powered Digital Safety Assistant";
 const DESCRIPTION =
   "Answers about what Cyberwall does, how it works, whether it's free, and what to do if you've already lost money to a scam.";
 
@@ -53,26 +53,27 @@ export default function FAQPage() {
       <Navbar />
       <main className="pt-16 pb-24 md:pt-20">
         <Container>
-          <h1 className="font-nohemi mt-6 text-3xl font-bold tracking-tight text-neutral-950 md:text-4xl">
+          <h1 className="font-nohemi mt-6 text-4xl font-bold tracking-tight text-neutral-950 md:text-5xl">
             Frequently asked questions
           </h1>
-          <p className="mt-3 max-w-md text-sm leading-relaxed text-neutral-600">
+          <p className="mt-4 max-w-xl text-base leading-relaxed text-neutral-600 md:text-lg">
             {DESCRIPTION}
           </p>
 
           <div className="mt-12 space-y-12">
             {FAQ_GROUPS.map((group) => (
               <section key={group.category}>
-                <h2 className="font-nohemi text-xs font-medium tracking-wide text-neutral-400 uppercase">
+                <h2 className="font-nohemi text-sm font-semibold text-brand">
                   {group.category}
                 </h2>
-                <div className="mt-2 divide-y divide-neutral-200 border-t border-neutral-200">
+                <div className="mt-4 space-y-3">
                   {group.items.map((item) => (
-                    <FaqItem
+                    <div
                       key={item.question}
-                      question={item.question}
-                      answer={item.answer}
-                    />
+                      className="rounded-3xl bg-white px-6 md:px-8"
+                    >
+                      <FaqItem question={item.question} answer={item.answer} />
+                    </div>
                   ))}
                 </div>
               </section>

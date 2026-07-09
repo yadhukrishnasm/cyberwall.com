@@ -5,16 +5,52 @@
 }
 
 /* ─── Color tokens — single source of truth for every custom color used
-     across components. Components should reference these via Tailwind
-     utilities (bg-surface, text-accent, bg-box-1, ...), never inline
-     hex/style colors. ─── */
+     across components. The brand cyan→blue spectrum is sampled directly
+     from the Cyberwall logo mark. Components reference these via
+     Tailwind utilities (bg-brand, bg-tint-blue, ...), never inline hex. ─── */
 @theme {
-    --color-surface: #f7f7f7;
+    --color-surface: #f6f7f9;
     --color-ink: #0a0a0a;
-    --color-accent: #1a56ff;
-    --color-box-1: #eef2ff;
-    --color-box-2: #eefcf3;
-    --color-box-3: #fdf3ec;
+
+    /* Logo spectrum */
+    --color-brand: #0048f0;
+    --color-brand-deep: #0034b0;
+    --color-cyan: #00c8f0;
+
+    /* accent kept as alias of brand for older utilities */
+    --color-accent: #0048f0;
+
+    /* Soft card tints (bento backgrounds) */
+    --color-tint-blue: #e8efff;
+    --color-tint-cyan: #e0f7fd;
+    --color-tint-lavender: #efecff;
+
+    /* Platform brand colors */
+    --color-whatsapp: #25d366;
+    --color-whatsapp-deep: #128c7e;
+    --color-whatsapp-tint: #e6f9ec;
+    --color-telegram: #26a5e4;
+    --color-telegram-deep: #1a7fb5;
+    --color-telegram-tint: #e3f3fc;
+
+    /* WhatsApp chat view (hero phone mockup) */
+    --color-wa-chat: #efeae2;
+    --color-wa-bubble: #d9fdd3;
+
+    /* Legacy tint aliases still used by CollageTile/modal */
+    --color-box-1: #e8efff;
+    --color-box-2: #e0f7fd;
+    --color-box-3: #efecff;
+
+    /* Status colors (flow diagram, trust score, emergency) */
+    --color-flow-amber-bg: #fef3c7;
+    --color-flow-amber-border: #f59e0b;
+    --color-flow-blue-bg: #e8efff;
+    --color-flow-blue-border: #0048f0;
+    --color-flow-green-bg: #ecfdf5;
+    --color-flow-green-border: #10b981;
+    --color-flow-red-bg: #fef2f2;
+    --color-flow-red-border: #ef4444;
 }
 
 html,
@@ -36,6 +72,52 @@ html {
     html {
         scroll-behavior: auto;
     }
+}
+
+/* ─── Brand gradient helpers ─── */
+.brand-gradient {
+    background-image: linear-gradient(
+        135deg,
+        var(--color-cyan) 0%,
+        var(--color-brand) 62%,
+        var(--color-brand-deep) 100%
+    );
+}
+
+.brand-gradient-soft {
+    background-image: linear-gradient(
+        160deg,
+        var(--color-tint-cyan) 0%,
+        var(--color-tint-blue) 55%,
+        var(--color-tint-lavender) 100%
+    );
+}
+
+.text-brand-gradient {
+    background-image: linear-gradient(
+        110deg,
+        var(--color-cyan) 0%,
+        var(--color-brand) 70%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+/* ─── Giant footer watermark (Kresna-style) ─── */
+.watermark {
+    font-size: clamp(4.5rem, 19vw, 17rem);
+    line-height: 0.78;
+    letter-spacing: -0.04em;
+    background-image: linear-gradient(
+        0deg,
+        rgba(10, 10, 10, 0.08),
+        rgba(10, 10, 10, 0.01)
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    user-select: none;
 }
 
 /* ─── Marquee (powered-by strip) ─── */
