@@ -174,9 +174,9 @@ export default function HowCyberwallWorks() {
                       "flex items-center gap-4 rounded-3xl border-2 px-6 py-5 shadow-sm",
                       card.bg,
                       card.border,
-                      i === 0 && "sm:-rotate-2",
-                      i === 1 && "sm:translate-x-4 sm:rotate-1",
-                      i === 2 && "sm:-rotate-1",
+                      i === 0 && "-rotate-2",
+                      i === 1 && "translate-x-4 rotate-1",
+                      i === 2 && "-rotate-1",
                     )}
                   >
                     <span className={cn("h-3 w-3 rounded-full", card.dot)} />
@@ -195,11 +195,14 @@ export default function HowCyberwallWorks() {
             </Reveal>
 
             <Reveal delay={100}>
-              <SectionHeading eyebrow="The analysis output" title="Trust Score" />
+              <SectionHeading
+                eyebrow="The analysis output"
+                title="Trust Score"
+              />
               <p className="mt-4 max-w-md text-lg leading-relaxed text-neutral-600">
                 Every relevant analysis includes a Trust Score, a clear
-                explanation, and recommended next steps. It gives you a
-                single, unambiguous metric to decide before you act.
+                explanation, and recommended next steps. It gives you a single,
+                unambiguous metric to decide before you act.
               </p>
             </Reveal>
           </div>
@@ -222,7 +225,9 @@ export default function HowCyberwallWorks() {
               <Reveal
                 key={pillar.title}
                 delay={i * 60}
-                className={pillar.span === 2 ? "col-span-2" : "col-span-2 sm:col-span-1"}
+                className={
+                  pillar.span === 2 ? "col-span-2" : "col-span-2 sm:col-span-1"
+                }
               >
                 <CollageTile
                   icon={pillar.icon}

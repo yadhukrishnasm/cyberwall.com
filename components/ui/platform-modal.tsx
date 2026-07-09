@@ -1,8 +1,16 @@
 "use client";
 
-import { SmartphoneIcon, TelegramIcon, WhatsAppIcon, XIcon } from "@/components/icons";
+import Image from "next/image";
 import {
-  keralaPoliceUrl,
+  AppleIcon,
+  GooglePlayIcon,
+  TelegramIcon,
+  WhatsAppIcon,
+  XIcon,
+} from "@/components/icons";
+import {
+  polAppAndroidUrl,
+  polAppIosUrl,
   telegramHandle,
   telegramHref,
   whatsappHref,
@@ -45,15 +53,28 @@ export function TryNowButton({
   );
 }
 
+function PolAppLogo({ className }: { className?: string }) {
+  return (
+    <Image
+      src="/polapp-logo.png"
+      alt="PolApp"
+      width={64}
+      height={64}
+      className={className}
+    />
+  );
+}
+
+// All three are equally valid ways to reach Cyberwall — same card
+// treatment, same border weight, no "primary" badge. Each keeps only
+// its own brand color for identity, not for hierarchy.
 const PLATFORMS = [
   {
     name: "WhatsApp",
     icon: WhatsAppIcon,
-    badge: "Primary",
     copy: "Start checking immediately on the app you already use.",
     detail: whatsappNumber,
-    cta: "Start Chat",
-    href: whatsappHref,
+    buttons: [{ label: "Start Chat", href: whatsappHref, icon: null }],
     cardClass: "bg-whatsapp-tint border-whatsapp/40",
     iconClass: "bg-whatsapp text-white",
     ctaClass: "bg-whatsapp-deep text-white",
@@ -62,28 +83,30 @@ const PLATFORMS = [
   {
     name: "Telegram",
     icon: TelegramIcon,
-    badge: null,
     copy: "Full Cyberwall experience, including larger files and APK verification.",
     detail: telegramHandle,
-    cta: "Try on Telegram",
-    href: telegramHref,
-    cardClass: "bg-telegram-tint border-transparent",
+    buttons: [{ label: "Try on Telegram", href: telegramHref, icon: null }],
+    cardClass: "bg-telegram-tint border-telegram/40",
     iconClass: "bg-telegram text-white",
     ctaClass: "bg-telegram-deep text-white",
     shotClass: "bg-telegram/15 text-telegram-deep",
   },
   {
     name: "PolApp",
-    icon: SmartphoneIcon,
-    badge: null,
+    icon: PolAppLogo,
     copy: "Built into the official Kerala Police PolApp.",
     detail: "iOS & Android",
-    cta: "Download App",
-    href: keralaPoliceUrl,
-    cardClass: "bg-tint-lavender border-transparent",
-    iconClass: "brand-gradient text-white",
+    buttons: [
+      { label: "App Store", href: polAppIosUrl, icon: AppleIcon },
+      { label: "Google Play", href: polAppAndroidUrl, icon: GooglePlayIcon },
+    ],
+    cardClass: "bg-tint-lavender border-brand/30",
+    // The PolApp mark ships on a white background (not transparent), so
+    // every box it sits in — including the screenshot slot — has to be
+    // white too, or the logo's own backing shows up as a mismatched box.
+    iconClass: "bg-white",
     ctaClass: "bg-neutral-950 text-white",
-    shotClass: "bg-brand/10 text-brand",
+    shotClass: "bg-white",
   },
 ];
 
@@ -129,40 +152,35 @@ export function PlatformModal() {
                   (whatsapp/telegram/polapp example) when available. */}
               <div
                 className={cn(
-                  "hidden aspect-[9/16] w-16 shrink-0 items-center justify-center rounded-xl sm:flex",
+                  "hidden aspect-[9/16] w-16 shrink-0 items-center justify-center rounded-xl p-2 sm:flex",
                   platform.shotClass,
                 )}
               >
-                <platform.icon className="h-6 w-6 opacity-60" />
+                <platform.icon className="h-full w-full object-contain opacity-70" />
               </div>
 
               <span
                 className={cn(
-                  "flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl shadow-sm sm:hidden",
+                  "flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl p-2 shadow-sm sm:hidden",
                   platform.iconClass,
                 )}
               >
-                <platform.icon className="h-7 w-7" />
+                <platform.icon className="h-full w-full object-contain" />
               </span>
 
               <div className="min-w-0 flex-1">
                 <div className="flex items-center gap-2">
                   <span
                     className={cn(
-                      "hidden h-7 w-7 shrink-0 items-center justify-center rounded-lg sm:flex",
+                      "hidden h-7 w-7 shrink-0 items-center justify-center rounded-lg p-1 sm:flex",
                       platform.iconClass,
                     )}
                   >
-                    <platform.icon className="h-4 w-4" />
+                    <platform.icon className="h-full w-full object-contain" />
                   </span>
                   <span className="font-nohemi text-lg font-bold text-neutral-950">
                     {platform.name}
                   </span>
-                  {platform.badge && (
-                    <span className="rounded-full bg-whatsapp-deep px-2.5 py-0.5 text-[11px] font-semibold text-white">
-                      {platform.badge}
-                    </span>
-                  )}
                 </div>
                 <p className="mt-1 text-sm leading-relaxed text-neutral-600">
                   {platform.copy}
@@ -172,17 +190,25 @@ export function PlatformModal() {
                 </p>
               </div>
 
-              <a
-                href={platform.href}
-                target="_blank"
-                rel="noreferrer"
-                className={cn(
-                  "shrink-0 rounded-full px-5 py-2.5 text-sm font-semibold transition-opacity hover:opacity-85",
-                  platform.ctaClass,
-                )}
-              >
-                {platform.cta}
-              </a>
+              <div className="flex shrink-0 flex-wrap gap-2">
+                {platform.buttons.map((button) => (
+                  <a
+                    key={button.label}
+                    href={button.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    className={cn(
+                      "flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold transition-opacity hover:opacity-85",
+                      button.icon
+                        ? "bg-neutral-950 text-white"
+                        : platform.ctaClass,
+                    )}
+                  >
+                    {button.icon && <button.icon className="h-4 w-4" />}
+                    {button.label}
+                  </a>
+                ))}
+              </div>
             </div>
           ))}
         </div>

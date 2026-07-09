@@ -1,22 +1,40 @@
-import { SmartphoneIcon, TelegramIcon, WhatsAppIcon } from "@/components/icons";
+import Image from "next/image";
+import {
+  AppleIcon,
+  GooglePlayIcon,
+  TelegramIcon,
+  WhatsAppIcon,
+} from "@/components/icons";
 import { Container } from "@/components/ui/container";
 import { Reveal } from "@/components/ui/reveal";
 import { SectionHeading } from "@/components/ui/section-heading";
 import {
-  keralaPoliceUrl,
+  polAppAndroidUrl,
+  polAppIosUrl,
   telegramHref,
   whatsappHref,
   whatsappNumber,
 } from "@/lib/contact";
 import { cn } from "@/lib/utils";
 
+function PolAppLogo({ className }: { className?: string }) {
+  return (
+    <Image
+      src="/polapp-logo.png"
+      alt="PolApp"
+      width={64}
+      height={64}
+      className={className}
+    />
+  );
+}
+
 const PLATFORMS = [
   {
     name: "WhatsApp",
     detail: whatsappNumber,
     icon: WhatsAppIcon,
-    cta: "Chat on WhatsApp",
-    href: whatsappHref,
+    buttons: [{ label: "Chat on WhatsApp", href: whatsappHref, icon: null }],
     featured: true,
     cardClass: "bg-whatsapp",
     ctaClass: "bg-white text-whatsapp-deep",
@@ -25,8 +43,7 @@ const PLATFORMS = [
     name: "Telegram",
     detail: null,
     icon: TelegramIcon,
-    cta: "Open in Telegram",
-    href: telegramHref,
+    buttons: [{ label: "Open in Telegram", href: telegramHref, icon: null }],
     featured: false,
     cardClass: "bg-telegram-tint",
     iconClass: "text-telegram",
@@ -35,12 +52,14 @@ const PLATFORMS = [
   {
     name: "PolApp",
     detail: null,
-    icon: SmartphoneIcon,
-    cta: "Download App",
-    href: keralaPoliceUrl,
+    icon: PolAppLogo,
+    buttons: [
+      { label: "App Store", href: polAppIosUrl, icon: AppleIcon },
+      { label: "Google Play", href: polAppAndroidUrl, icon: GooglePlayIcon },
+    ],
     featured: false,
     cardClass: "bg-tint-lavender",
-    iconClass: "text-brand",
+    iconClass: "",
     ctaClass: "bg-neutral-950 text-white",
   },
 ];
@@ -90,13 +109,13 @@ export default function VerifyChannels() {
                   <div className="flex items-center gap-3.5">
                     <span
                       className={cn(
-                        "flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl shadow-sm",
+                        "flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl p-2 shadow-sm",
                         platform.featured ? "bg-white/25" : "bg-white",
                       )}
                     >
                       <platform.icon
                         className={cn(
-                          "h-6 w-6",
+                          "h-full w-full object-contain",
                           platform.featured ? "text-white" : platform.iconClass,
                         )}
                       />
@@ -124,17 +143,23 @@ export default function VerifyChannels() {
                       )}
                     </div>
                   </div>
-                  <a
-                    href={platform.href}
-                    target="_blank"
-                    rel="noreferrer"
-                    className={cn(
-                      "w-full shrink-0 rounded-full px-5 py-2.5 text-center text-sm font-semibold transition-opacity hover:opacity-85 sm:w-auto",
-                      platform.ctaClass,
-                    )}
-                  >
-                    {platform.cta}
-                  </a>
+                  <div className="flex w-full flex-wrap gap-2 sm:w-auto">
+                    {platform.buttons.map((button) => (
+                      <a
+                        key={button.label}
+                        href={button.href}
+                        target="_blank"
+                        rel="noreferrer"
+                        className={cn(
+                          "flex flex-1 shrink-0 items-center justify-center gap-2 rounded-full px-5 py-2.5 text-center text-sm font-semibold transition-opacity hover:opacity-85 sm:flex-none",
+                          button.icon ? "bg-neutral-950 text-white" : platform.ctaClass,
+                        )}
+                      >
+                        {button.icon && <button.icon className="h-4 w-4" />}
+                        {button.label}
+                      </a>
+                    ))}
+                  </div>
                 </div>
               </Reveal>
             ))}
