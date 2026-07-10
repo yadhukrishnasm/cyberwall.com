@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Container } from "@/components/ui/container";
 import { Reveal } from "@/components/ui/reveal";
 
@@ -5,26 +6,39 @@ const BADGES = ["Kerala Police", "Cyber Division", "AI-Powered Public Safety"];
 
 export default function TrustRibbon() {
   return (
-    <section className="py-10">
+    <section className="pb-4">
       <Container>
         <Reveal>
-          <div className="brand-gradient flex flex-col items-center gap-3 rounded-3xl px-6 py-8 text-center">
-            <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
+          <div className="brand-gradient relative flex flex-col items-center gap-5 overflow-hidden rounded-[2rem] px-6 py-9 text-center md:flex-row md:justify-between md:px-10 md:text-left">
+            <div className="pointer-events-none absolute -top-16 right-10 h-40 w-40 rounded-full bg-white/10 blur-3xl" />
+
+            <div className="relative flex items-center gap-3.5">
+              <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-white p-2">
+                <Image
+                  src="/kp-logo.png"
+                  alt="Kerala Police logo"
+                  width={32}
+                  height={32}
+                />
+              </span>
+              <p className="max-w-xs text-sm leading-relaxed text-white/85">
+                Developed by Kerala Police to help people identify digital
+                scams before they happen.
+              </p>
+            </div>
+
+            <div className="relative flex flex-wrap items-center justify-center gap-x-3 gap-y-2 md:justify-end">
               {BADGES.map((badge, i) => (
-                <span key={badge} className="flex items-center gap-5">
-                  <span className="font-nohemi text-sm font-bold text-white md:text-base">
+                <span key={badge} className="flex items-center gap-3">
+                  {i > 0 && (
+                    <span className="h-1 w-1 rounded-full bg-white/40" />
+                  )}
+                  <span className="font-nohemi text-sm font-bold text-white">
                     {badge}
                   </span>
-                  {i < BADGES.length - 1 && (
-                    <span className="hidden h-1.5 w-1.5 rounded-full bg-white/50 sm:inline-block" />
-                  )}
                 </span>
               ))}
             </div>
-            <p className="text-sm text-white/75 italic md:text-base">
-              Developed by Kerala Police to help people identify digital scams
-              before they happen.
-            </p>
           </div>
         </Reveal>
       </Container>

@@ -1,4 +1,5 @@
 import { cn } from "@/lib/utils";
+import { Eyebrow } from "@/components/ui/primitives";
 
 export function SectionHeading({
   eyebrow,
@@ -17,28 +18,11 @@ export function SectionHeading({
 }) {
   return (
     <div className={cn(align === "center" && "mx-auto text-center", className)}>
-      {eyebrow && (
-        <span
-          className={cn(
-            "inline-flex items-center gap-2 rounded-full px-3.5 py-1.5 text-sm font-semibold",
-            tone === "dark"
-              ? "bg-white/10 text-neutral-300"
-              : "bg-tint-blue text-brand",
-          )}
-        >
-          <span
-            className={cn(
-              "h-1.5 w-1.5 shrink-0 rounded-full",
-              tone === "dark" ? "bg-neutral-300" : "bg-brand",
-            )}
-          />
-          {eyebrow}
-        </span>
-      )}
+      {eyebrow && <Eyebrow tone={tone}>{eyebrow}</Eyebrow>}
       <h2
         className={cn(
-          "font-nohemi mt-4 max-w-2xl text-3xl leading-[1.08] font-bold tracking-tight md:text-5xl",
-          align === "center" && "mx-auto",
+          "font-nohemi mt-5 text-3xl leading-[1.06] font-bold tracking-tight text-balance sm:text-4xl md:text-5xl",
+          align === "center" ? "mx-auto max-w-3xl" : "max-w-2xl",
           tone === "dark" ? "text-white" : "text-neutral-950",
         )}
       >
@@ -47,8 +31,8 @@ export function SectionHeading({
       {description && (
         <p
           className={cn(
-            "mt-4 max-w-xl text-base leading-relaxed md:text-lg",
-            align === "center" && "mx-auto",
+            "mt-5 text-base leading-relaxed text-pretty md:text-lg",
+            align === "center" ? "mx-auto max-w-2xl" : "max-w-xl",
             tone === "dark" ? "text-neutral-400" : "text-neutral-600",
           )}
         >

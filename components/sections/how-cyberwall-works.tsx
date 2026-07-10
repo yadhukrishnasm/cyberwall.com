@@ -9,6 +9,7 @@ import {
 } from "@/components/icons";
 import { Container } from "@/components/ui/container";
 import { CollageTile } from "@/components/ui/media-placeholder";
+import { IconBox } from "@/components/ui/primitives";
 import { Reveal } from "@/components/ui/reveal";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { TryNowButton } from "@/components/ui/platform-modal";
@@ -18,52 +19,58 @@ const PROCESS_STEPS = [
   {
     label: "01",
     icon: MessageIcon,
-    title: "Share Naturally",
+    title: "Share naturally",
     subtitle: "Understand",
     description:
       "Just explain the situation, upload a screenshot, or send a voice note.",
-    tint: "bg-tint-blue",
+    tone: "blue" as const,
   },
   {
     label: "02",
     icon: GaugeIcon,
-    title: "Threat Analysis",
+    title: "Threat analysis",
     subtitle: "Check",
     description:
       "The engine runs domain checks, phone checks, APK scans, and scam reports.",
-    tint: "bg-tint-cyan",
+    tone: "cyan" as const,
   },
   {
     label: "03",
     icon: ShieldCheckIcon,
-    title: "Clear Guidance",
+    title: "Clear guidance",
     subtitle: "Guide",
     description:
       "Cyberwall returns a safety score and tells you exactly what to do.",
-    tint: "bg-tint-lavender",
+    tone: "lavender" as const,
   },
 ];
+
+const TINT_BG = {
+  blue: "bg-tint-blue",
+  cyan: "bg-tint-cyan",
+  lavender: "bg-tint-lavender",
+} as const;
 
 const SCORE_CARDS = [
   {
     score: "92",
-    label: "Looks Trustworthy",
+    label: "Looks trustworthy",
     bg: "bg-flow-green-bg",
-    border: "border-flow-green-border",
+    border: "border-flow-green-border/40",
     dot: "bg-flow-green-border",
   },
   {
     score: "61",
-    label: "Proceed Carefully",
+    label: "Proceed carefully",
     bg: "bg-flow-amber-bg",
-    border: "border-flow-amber-border",
+    border: "border-flow-amber-border/40",
     dot: "bg-flow-amber-border",
   },
   {
     score: "18",
-    label: "High Risk",
+    label: "High risk",
     bg: "bg-flow-red-bg",
-    border: "border-flow-red-border",
+    border: "border-flow-red-border/40",
     dot: "bg-flow-red-border",
   },
 ];
@@ -71,7 +78,7 @@ const SCORE_CARDS = [
 const PILLARS = [
   {
     icon: LinkIcon,
-    title: "Link & Domain Safety",
+    title: "Link & domain safety",
     description:
       "Scans URLs for phishing threats, fake lookalike domains, age records, and active content risks.",
     tint: 1,
@@ -79,7 +86,7 @@ const PILLARS = [
   },
   {
     icon: PackageIcon,
-    title: "App & Malware Auditing",
+    title: "App & malware auditing",
     description:
       "Inspects Android APK files, permission requests, and digital signatures for malicious code.",
     tint: 2,
@@ -87,7 +94,7 @@ const PILLARS = [
   },
   {
     icon: MessageIcon,
-    title: "Identity & Message Verification",
+    title: "Identity & message verification",
     description:
       "Audits incoming caller IDs, country risk codes, and official SMS/DLT sender headers.",
     tint: 3,
@@ -95,17 +102,17 @@ const PILLARS = [
   },
   {
     icon: LandmarkIcon,
-    title: "Financial Account Screening",
+    title: "Financial account screening",
     description:
-      "Scans UPI IDs, bank accounts, and IFSC codes to detect known money laundering pathways.",
+      "Scans UPI IDs, bank accounts, and IFSC codes to detect known money-laundering pathways.",
     tint: 2,
     span: 2,
   },
   {
     icon: SparklesIcon,
-    title: "AI Contextual Analysis",
+    title: "AI contextual analysis",
     description:
-      "Uses OCR and natural language reasoning to analyze chats, screenshots, and voice call patterns.",
+      "Uses OCR and natural-language reasoning to analyze chats, screenshots, and call patterns.",
     tint: 1,
     span: 2,
   },
@@ -114,8 +121,8 @@ const PILLARS = [
 export default function HowCyberwallWorks() {
   return (
     <>
-      {/* 1. The Verification Process */}
-      <section id="how-it-works" className="py-20 md:py-28">
+      {/* 1 · Verification process */}
+      <section id="how-it-works" className="py-16 md:py-24">
         <Container>
           <Reveal>
             <SectionHeading
@@ -124,27 +131,25 @@ export default function HowCyberwallWorks() {
             />
           </Reveal>
 
-          <div className="mt-12 grid gap-5 md:grid-cols-3">
+          <div className="mt-10 grid gap-4 md:grid-cols-3">
             {PROCESS_STEPS.map((step, i) => (
               <Reveal key={step.title} delay={i * 100}>
                 <div
                   className={cn(
-                    "flex h-full flex-col rounded-3xl p-7",
-                    step.tint,
+                    "flex h-full flex-col rounded-[2rem] p-8",
+                    TINT_BG[step.tone],
                   )}
                 >
                   <div className="flex items-center justify-between">
                     <span className="font-nohemi text-sm font-bold text-brand">
                       {step.label} · {step.subtitle}
                     </span>
-                    <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white shadow-sm">
-                      <step.icon className="h-6 w-6 text-brand" />
-                    </span>
+                    <IconBox icon={step.icon} tone="white" />
                   </div>
-                  <h3 className="font-nohemi mt-6 text-xl font-bold text-neutral-950 md:text-2xl">
+                  <h3 className="font-nohemi mt-8 text-2xl font-bold text-neutral-950">
                     {step.title}
                   </h3>
-                  <p className="mt-2.5 text-base leading-relaxed text-neutral-600">
+                  <p className="mt-3 text-base leading-relaxed text-neutral-600">
                     {step.description}
                   </p>
                 </div>
@@ -153,36 +158,35 @@ export default function HowCyberwallWorks() {
           </div>
 
           <Reveal delay={320}>
-            <TryNowButton className="mt-12">Try Now</TryNowButton>
+            <div className="mt-8">
+              <TryNowButton>Try Now</TryNowButton>
+            </div>
           </Reveal>
         </Container>
       </section>
 
-      {/* 2. The Analysis Output: Trust Score */}
-      <section className="py-20 md:py-28">
+      {/* 2 · Trust Score */}
+      <section className="py-16 md:py-24">
         <Container>
-          <div className="grid items-center gap-12 overflow-hidden rounded-[2.5rem] bg-white p-8 md:grid-cols-2 md:gap-16 md:p-14">
+          <div className="grid items-center gap-4 rounded-[2rem] border border-neutral-200/70 bg-white p-8 md:grid-cols-2 md:gap-12 md:p-12">
             <Reveal>
-              {/* Score pill stack — graphic stand-in for a product shot.
-                  The playful tilt/offset only kicks in at sm: so nothing
-                  pokes past the card edge on narrow phones. */}
-              <div className="relative mx-auto flex max-w-xs flex-col gap-4">
+              <div className="relative mx-auto flex max-w-sm flex-col gap-3">
                 {SCORE_CARDS.map((card, i) => (
                   <div
                     key={card.score}
                     className={cn(
-                      "flex items-center gap-4 rounded-3xl border-2 px-6 py-5 shadow-sm",
+                      "flex items-center gap-4 rounded-2xl border-2 px-6 py-5",
                       card.bg,
                       card.border,
-                      i === 0 && "-rotate-2",
-                      i === 1 && "translate-x-4 rotate-1",
-                      i === 2 && "-rotate-1",
+                      i === 0 && "sm:-rotate-1",
+                      i === 1 && "sm:translate-x-5",
+                      i === 2 && "sm:rotate-1",
                     )}
                   >
                     <span className={cn("h-3 w-3 rounded-full", card.dot)} />
                     <span className="font-nohemi text-3xl font-bold text-neutral-950">
                       {card.score}
-                      <span className="text-base font-medium text-neutral-500">
+                      <span className="text-base font-medium text-neutral-400">
                         /100
                       </span>
                     </span>
@@ -199,7 +203,7 @@ export default function HowCyberwallWorks() {
                 eyebrow="The analysis output"
                 title="Trust Score"
               />
-              <p className="mt-4 max-w-md text-lg leading-relaxed text-neutral-600">
+              <p className="mt-5 text-base leading-relaxed text-neutral-600 md:text-lg">
                 Every relevant analysis includes a Trust Score, a clear
                 explanation, and recommended next steps. It gives you a single,
                 unambiguous metric to decide before you act.
@@ -209,18 +213,18 @@ export default function HowCyberwallWorks() {
         </Container>
       </section>
 
-      {/* 3. The Backend Engine */}
-      <section id="engine" className="py-20 md:py-28">
+      {/* 3 · Engine */}
+      <section id="engine" className="py-16 md:py-24">
         <Container>
           <Reveal>
             <SectionHeading
               eyebrow="Engine"
               title="AI that reasons. Security that verifies."
-              description="Powered by over 35+ automated verification checks running in the background. Cyberwall analyzes threat indicators in milliseconds to protect you from fraud."
+              description="Over 35 automated verification checks run in the background, analyzing threat indicators in milliseconds to protect you from fraud."
             />
           </Reveal>
 
-          <div className="mt-12 grid grid-cols-2 auto-rows-[14rem] gap-4 md:grid-cols-4 md:auto-rows-[16rem]">
+          <div className="mt-10 grid auto-rows-[15rem] grid-cols-2 gap-4 md:grid-cols-4">
             {PILLARS.map((pillar, i) => (
               <Reveal
                 key={pillar.title}

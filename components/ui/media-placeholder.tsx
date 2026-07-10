@@ -26,7 +26,7 @@ export function CollageTile({
   return (
     <div
       className={cn(
-        "relative flex h-full flex-col justify-between overflow-hidden rounded-3xl p-6",
+        "relative flex h-full flex-col justify-between overflow-hidden rounded-[2rem] p-7",
         TINTS[tint],
         className,
       )}

@@ -41,7 +41,7 @@ const PLATFORMS = [
   },
   {
     name: "Telegram",
-    detail: null,
+    detail: "@Cyber_wall_bot",
     icon: TelegramIcon,
     buttons: [{ label: "Open in Telegram", href: telegramHref, icon: null }],
     featured: false,
@@ -51,7 +51,7 @@ const PLATFORMS = [
   },
   {
     name: "PolApp",
-    detail: null,
+    detail: "Official Kerala Police app",
     icon: PolAppLogo,
     buttons: [
       { label: "App Store", href: polAppIosUrl, icon: AppleIcon },
@@ -65,51 +65,60 @@ const PLATFORMS = [
 ];
 
 const HIGHLIGHTS = [
-  "Fast Responses",
+  "Fast responses",
   "English & Malayalam",
-  "Text • Image • Voice",
-  "Familiar Platforms",
+  "Text, image & voice",
+  "Familiar platforms",
 ];
 
 export default function VerifyChannels() {
   return (
-    <section className="py-20 md:py-28">
+    <section className="py-16 md:py-24">
       <Container>
-        <div className="grid gap-12 md:grid-cols-[0.9fr_1.1fr] md:gap-10">
-          <Reveal>
-            <SectionHeading eyebrow="Where to verify" title="Ask naturally." />
-            <p className="mt-5 max-w-sm text-lg leading-relaxed text-neutral-600">
-              Just explain what&apos;s happening. Cyberwall understands your
-              situation, performs the right security checks, and tells you
-              what to do next.
-            </p>
+        <div className="grid gap-4 lg:grid-cols-5">
+          {/* Left: copy card */}
+          <Reveal className="lg:col-span-2">
+            <div className="flex h-full flex-col justify-between rounded-[2rem] border border-neutral-200/70 bg-white p-8 md:p-10">
+              <div>
+                <SectionHeading
+                  eyebrow="Where to verify"
+                  title="Ask naturally."
+                />
+                <p className="mt-5 text-base leading-relaxed text-neutral-600">
+                  Just explain what&apos;s happening. Cyberwall understands your
+                  situation, runs the right security checks, and tells you what
+                  to do next.
+                </p>
+              </div>
 
-            <ul className="mt-7 space-y-3">
-              {HIGHLIGHTS.map((item) => (
-                <li
-                  key={item}
-                  className="flex items-center gap-3 text-base font-medium text-neutral-700"
-                >
-                  <span className="h-2 w-2 shrink-0 rounded-full bg-brand" />
-                  {item}
-                </li>
-              ))}
-            </ul>
+              <ul className="mt-8 grid grid-cols-2 gap-3">
+                {HIGHLIGHTS.map((item) => (
+                  <li
+                    key={item}
+                    className="flex items-center gap-2.5 text-sm font-medium text-neutral-700"
+                  >
+                    <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-brand" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
           </Reveal>
 
-          <div className="grid gap-4">
+          {/* Right: platform cards */}
+          <div className="grid gap-4 lg:col-span-3">
             {PLATFORMS.map((platform, i) => (
               <Reveal key={platform.name} delay={i * 100}>
                 <div
                   className={cn(
-                    "flex flex-col items-start gap-4 rounded-3xl p-6 sm:flex-row sm:items-center sm:justify-between md:p-7",
+                    "flex flex-col items-start gap-5 rounded-[2rem] p-6 sm:flex-row sm:items-center sm:justify-between md:p-7",
                     platform.cardClass,
                   )}
                 >
-                  <div className="flex items-center gap-3.5">
+                  <div className="flex items-center gap-4">
                     <span
                       className={cn(
-                        "flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl p-2 shadow-sm",
+                        "flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl p-2.5 shadow-sm",
                         platform.featured ? "bg-white/25" : "bg-white",
                       )}
                     >
@@ -123,24 +132,22 @@ export default function VerifyChannels() {
                     <div>
                       <span
                         className={cn(
-                          "font-nohemi block text-lg font-bold",
+                          "font-nohemi block text-xl font-bold",
                           platform.featured ? "text-white" : "text-neutral-950",
                         )}
                       >
                         {platform.name}
                       </span>
-                      {platform.detail && (
-                        <span
-                          className={cn(
-                            "text-sm",
-                            platform.featured
-                              ? "text-white/80"
-                              : "text-neutral-500",
-                          )}
-                        >
-                          {platform.detail}
-                        </span>
-                      )}
+                      <span
+                        className={cn(
+                          "text-sm",
+                          platform.featured
+                            ? "text-white/80"
+                            : "text-neutral-500",
+                        )}
+                      >
+                        {platform.detail}
+                      </span>
                     </div>
                   </div>
                   <div className="flex w-full flex-wrap gap-2 sm:w-auto">
@@ -151,8 +158,10 @@ export default function VerifyChannels() {
                         target="_blank"
                         rel="noreferrer"
                         className={cn(
-                          "flex flex-1 shrink-0 items-center justify-center gap-2 rounded-full px-5 py-2.5 text-center text-sm font-semibold transition-opacity hover:opacity-85 sm:flex-none",
-                          button.icon ? "bg-neutral-950 text-white" : platform.ctaClass,
+                          "flex flex-1 shrink-0 items-center justify-center gap-2 rounded-full px-5 py-3 text-center text-sm font-semibold transition-opacity hover:opacity-85 sm:flex-none",
+                          button.icon
+                            ? "bg-neutral-950 text-white"
+                            : platform.ctaClass,
                         )}
                       >
                         {button.icon && <button.icon className="h-4 w-4" />}

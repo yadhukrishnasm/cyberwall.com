@@ -18,7 +18,7 @@ export function Navbar() {
 
   return (
     <header className="sticky top-0 z-40 px-3 pt-3">
-      <div className="mx-auto flex h-16 w-full max-w-7xl items-center justify-between rounded-2xl border border-white bg-white/85 p-5 shadow-lg shadow-neutral-950/5 backdrop-blur-md md:px-10">
+      <div className="mx-auto flex h-16 w-full max-w-6xl items-center justify-between rounded-2xl border border-neutral-200/70 bg-white/80 pr-2 pl-5 shadow-sm shadow-neutral-950/5 backdrop-blur-xl md:pr-2.5 md:pl-6">
         <Link href="/" className="flex items-center gap-2.5">
           <Image
             src="/cyberwall-logo.png"

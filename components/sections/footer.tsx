@@ -15,7 +15,7 @@ const LEGAL_LINKS = ["Privacy", "Terms", "Accessibility"];
 export default function Footer() {
   return (
     <footer className="overflow-hidden pt-20">
-      <div className="mx-auto w-full max-w-5xl px-6">
+      <div className="mx-auto w-full max-w-6xl px-5 md:px-6">
         <div className="grid gap-5 md:grid-cols-[0.85fr_1.15fr]">
           {/* Brand card */}
           <div className="brand-gradient flex min-h-72 flex-col justify-between rounded-[2rem] p-8">
