@@ -9,7 +9,7 @@ const RATE_LIMIT_MAX_REQUESTS = 8;
 
 // Simple in-memory rate limiter, keyed by IP. Resets on every cold start
 // and isn't shared across serverless instances — good enough for a small
-// deployment, not a substitute for a real rate-limiting service at scale.
+// deployment, not a substitute for a real rate-limiting service at scale
 const requestLog = new Map<string, number[]>();
 
 function isRateLimited(ip: string): boolean {

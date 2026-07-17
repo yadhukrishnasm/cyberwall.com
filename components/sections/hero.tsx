@@ -51,7 +51,7 @@ function TrustScoreCard({ className }: { className?: string }) {
   return (
     <div
       className={cn(
-        "w-44 rounded-2xl bg-white p-4 shadow-xl shadow-neutral-950/5",
+        "w-44 rounded-2xl bg-white p-4 shadow-xl shadow-neutral-950/5 hidden md:visible",
         className,
       )}
     >

@@ -9,10 +9,10 @@ export default function TrustRibbon() {
     <section className="pb-4">
       <Container>
         <Reveal>
-          <div className="brand-gradient relative flex flex-col items-center gap-5 overflow-hidden rounded-[2rem] px-6 py-9 text-center md:flex-row md:justify-between md:px-10 md:text-left">
+          <div className="brand-gradient relative flex flex-col items-center gap-5 overflow-hidden rounded-4xl px-6 py-9 text-center md:flex-row md:justify-between md:px-10 md:text-left">
             <div className="pointer-events-none absolute -top-16 right-10 h-40 w-40 rounded-full bg-white/10 blur-3xl" />
 
-            <div className="relative flex items-center gap-3.5">
+            <div className="relative flex flex-col items-center gap-3.5 md:flex-row md:items-center">
               <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-white p-2">
                 <Image
                   src="/kp-logo.png"

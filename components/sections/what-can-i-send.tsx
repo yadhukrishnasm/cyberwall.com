@@ -45,6 +45,20 @@ const TARGET_BG = {
   lavender: "bg-tint-lavender",
 } as const;
 
+// Hand-picked "scattered" transforms so no two icon objects sit at the
+// same offset or angle — deterministic (not Math.random) to stay
+// hydration-safe. Each combines a vertical anchor, a bleed amount, and
+// a tilt. Cycled by tile index.
+const ICON_POSES = [
+  "translate-y-[-54%] translate-x-[26%] rotate-[10deg]",
+  "translate-y-[-38%] translate-x-[33%] rotate-[-8deg]",
+  "translate-y-[-60%] translate-x-[20%] rotate-[16deg]",
+  "translate-y-[-44%] translate-x-[30%] rotate-[-12deg]",
+  "translate-y-[-56%] translate-x-[23%] rotate-[4deg]",
+  "translate-y-[-40%] translate-x-[35%] rotate-[-5deg]",
+  "translate-y-[-50%] translate-x-[17%] rotate-[13deg]",
+];
+
 export default function WhatCanISend() {
   return (
     <section className="py-16 md:py-24">
@@ -89,12 +103,29 @@ export default function WhatCanISend() {
             >
               <div
                 className={cn(
-                  "flex h-full flex-col justify-between rounded-[2rem] p-6",
+                  "relative flex h-full min-h-[11rem] flex-col justify-end overflow-hidden rounded-[2rem] p-7",
                   TARGET_BG[target.tone],
                 )}
               >
-                <IconBox icon={target.icon} tone="white" />
-                <span className="font-nohemi mt-6 text-lg font-bold text-neutral-950">
+                {/* 3D-lite icon object bleeding off the right edge.
+                    To use a real 3D icon render later, drop a PNG in
+                    /public and swap this block for:
+                    <Image src={target.image} fill className="absolute ... object-contain" /> */}
+                <div
+                  className={cn(
+                    "pointer-events-none absolute top-1/2 right-0",
+                    ICON_POSES[i % ICON_POSES.length],
+                  )}
+                >
+                  <div className="flex h-28 w-28 items-center justify-center rounded-[2rem] bg-linear-to-br from-white via-white to-brand/10 shadow-xl shadow-brand/25 ring-1 ring-white/70">
+                    <target.icon
+                      strokeWidth={2.25}
+                      className="h-14 w-14 text-brand drop-shadow-sm"
+                    />
+                  </div>
+                </div>
+
+                <span className="font-nohemi relative text-xl font-bold text-neutral-950">
                   {target.label}
                 </span>
               </div>

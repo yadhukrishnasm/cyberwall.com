@@ -27,8 +27,8 @@ function openPlatformModal() {
 
 const BUTTON_CLASSES = {
   primary:
-    "brand-gradient rounded-full px-7 py-3.5 text-base font-semibold text-white shadow-lg shadow-brand/25 transition-all hover:opacity-90",
-  dark: "rounded-full bg-white px-7 py-3.5 text-base font-semibold text-neutral-950 transition-opacity hover:opacity-85",
+    "brand-gradient rounded-3xl px-7 py-3.5 text-base font-semibold text-white shadow-lg shadow-brand/25 transition-all hover:opacity-90",
+  dark: "rounded-4xl bg-white px-7 py-3.5 text-base font-semibold text-neutral-950 transition-opacity hover:opacity-85",
 } as const;
 
 // Every "Try Now" / "Start Verifying Now" CTA across the page opens
@@ -190,8 +190,9 @@ export function PlatformModal() {
                 </p>
               </div>
 
-              <div className="flex shrink-0 flex-wrap gap-2">
+              <div className="flex  flex-col gap-2">
                 {platform.buttons.map((button) => (
+
                   <a
                     key={button.label}
                     href={button.href}
@@ -204,6 +205,7 @@ export function PlatformModal() {
                         : platform.ctaClass,
                     )}
                   >
+
                     {button.icon && <button.icon className="h-4 w-4" />}
                     {button.label}
                   </a>

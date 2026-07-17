@@ -18,46 +18,47 @@ export function Navbar() {
 
   return (
     <header className="sticky top-0 z-40 px-3 pt-3">
-      <div className="mx-auto flex h-16 w-full max-w-6xl items-center justify-between rounded-2xl border border-neutral-200/70 bg-white/80 pr-2 pl-5 shadow-sm shadow-neutral-950/5 backdrop-blur-xl md:pr-2.5 md:pl-6">
-        <Link href="/" className="flex items-center gap-2.5">
+      <div className="mx-auto flex h-fit w-full max-w-6xl items-center justify-between rounded-4xl border border-neutral-200/70 bg-white/80 pr-4.5 pl-4 py-2 shadow-sm shadow-neutral-950/5 backdrop-blur-xl md:pl-6">
+        <Link href="/" className="flex items-center gap-2">
           <Image
             src="/cyberwall-logo.png"
             alt="Cyberwall logo"
-            width={46}
-            height={36}
+            width={58}
+            height={50}
+            className=" w-auto"
           />
-          <span className="font-nohemi hidden text-lg font-bold tracking-tight sm:inline">
+          {/*<span className="font-nohemi hidden text-lg font-bold tracking-tight sm:inline">
             Cyberwall
-          </span>
+          </span>*/}
         </Link>
 
-        <nav className="hidden items-center gap-8 md:flex">
+        <nav className="hidden items-center gap-7 md:flex">
           {isHome &&
             NAV_LINKS.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
-                className="text-base font-medium text-neutral-600 transition-colors hover:text-brand"
+                className=" font-medium text-neutral-600 transition-colors hover:text-brand"
               >
                 {link.label}
               </a>
             ))}
           <Link
             href="/faq"
-            className="text-base font-medium text-neutral-600 transition-colors hover:text-brand"
+            className="text-sm font-medium text-neutral-600 transition-colors hover:text-brand"
           >
             FAQ
           </Link>
         </nav>
 
         <div className="flex items-center gap-2">
-          <TryNowButton className="!px-4 !py-2.5 !text-sm sm:!px-5">
+          <TryNowButton className=" !px-4 !py-2 !text-sm !shadow-sm">
             Try Now
           </TryNowButton>
 
           <details className="relative md:hidden">
-            <summary className="flex h-10 w-10 cursor-pointer list-none items-center justify-center rounded-full bg-tint-blue text-brand marker:content-none">
-              <MenuIcon className="h-5 w-5" />
+            <summary className="flex h-9 w-9 cursor-pointer list-none items-center justify-center rounded-full bg-tint-blue text-brand marker:content-none">
+              <MenuIcon className="h-4.5 w-4.5" />
             </summary>
             <nav className="absolute top-12 right-0 z-50 flex w-52 flex-col gap-1 rounded-2xl border border-neutral-100 bg-white p-3 shadow-xl shadow-neutral-950/10">
               {isHome &&

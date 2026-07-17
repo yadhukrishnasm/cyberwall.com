@@ -178,9 +178,9 @@ export default function HowCyberwallWorks() {
                       "flex items-center gap-4 rounded-2xl border-2 px-6 py-5",
                       card.bg,
                       card.border,
-                      i === 0 && "sm:-rotate-1",
-                      i === 1 && "sm:translate-x-5",
-                      i === 2 && "sm:rotate-1",
+                      i === 0 && "-rotate-2",
+                      i === 1 && "translate-x-4 rotate-1",
+                      i === 2 && "-translate-x-2 rotate-2",
                     )}
                   >
                     <span className={cn("h-3 w-3 rounded-full", card.dot)} />

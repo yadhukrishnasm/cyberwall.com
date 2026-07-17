@@ -123,9 +123,9 @@ export default function Footer() {
       {/* Giant watermark */}
       <div
         aria-hidden
-        className="watermark font-nohemi mt-10 -mb-4 overflow-hidden text-center font-bold whitespace-nowrap"
+        className="watermark font-nohemi sm:mt-10 mt-4 sm:-mb-10 -mb-4 overflow-hidden text-center font-bold whitespace-nowrap"
       >
-        Cyberwall
+        Kerala Police
       </div>
     </footer>
   );

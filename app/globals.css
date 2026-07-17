@@ -13,17 +13,17 @@
     --color-ink: #0a0a0a;
 
     /* Logo spectrum */
-    --color-brand: #0048f0;
-    --color-brand-deep: #0034b0;
-    --color-cyan: #00c8f0;
+    --color-brand: #2F67F6;
+    --color-brand-deep: #2555D8;
+    --color-cyan: #32C4F0;
 
-    /* accent kept as alias of brand for older utilities */
-    --color-accent: #0048f0;
+    /* Accent alias */
+    --color-accent: #3B6EF5;
 
-    /* Soft card tints (bento backgrounds) */
-    --color-tint-blue: #e8efff;
-    --color-tint-cyan: #e0f7fd;
-    --color-tint-lavender: #efecff;
+    /* Soft card tints */
+    --color-tint-blue: #EAF1FF;
+    --color-tint-cyan: #E8FAFF;
+    --color-tint-lavender: #F0ECFF;
 
     /* Platform brand colors */
     --color-whatsapp: #25d366;
@@ -45,8 +45,8 @@
     /* Status colors (flow diagram, trust score, emergency) */
     --color-flow-amber-bg: #fef3c7;
     --color-flow-amber-border: #f59e0b;
-    --color-flow-blue-bg: #e8efff;
-    --color-flow-blue-border: #0048f0;
+    --color-flow-blue-bg: #EAF1FF;
+    --color-flow-blue-border: #3B6EF5;
     --color-flow-green-bg: #ecfdf5;
     --color-flow-green-border: #10b981;
     --color-flow-red-bg: #fef2f2;
@@ -78,12 +78,11 @@ html {
 .brand-gradient {
     background-image: linear-gradient(
         135deg,
-        var(--color-cyan) 0%,
-        var(--color-brand) 62%,
-        var(--color-brand-deep) 100%
+        color-mix(in srgb, var(--color-cyan) 85%, white 15%) 0%,
+        color-mix(in srgb, var(--color-brand) 88%, white 12%) 62%,
+        color-mix(in srgb, var(--color-brand-deep) 90%, white 10%) 100%
     );
 }
-
 .brand-gradient-soft {
     background-image: linear-gradient(
         160deg,
@@ -106,18 +105,37 @@ html {
 
 /* ─── Giant footer watermark (Kresna-style) ─── */
 .watermark {
-    font-size: clamp(4.5rem, 19vw, 17rem);
+    font-size: clamp(2rem, 18vw, 18rem);
     line-height: 0.78;
     letter-spacing: -0.04em;
     background-image: linear-gradient(
         0deg,
-        rgba(10, 10, 10, 0.08),
+        rgba(10, 10, 10, 0.15),
         rgba(10, 10, 10, 0.01)
     );
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
     user-select: none;
+}
+
+/* ─── Icon-object fade (What can I send? tiles) — the 3D-lite icon
+     plate is fully visible where it meets the card's outer edge and
+     fades into the card toward the label, so it reads as gradiently
+     visible rather than a solid opaque block. ─── */
+.icon-fade {
+    -webkit-mask-image: linear-gradient(
+        to left,
+        black 35%,
+        rgba(0, 0, 0, 0.45) 62%,
+        transparent 96%
+    );
+    mask-image: linear-gradient(
+        to left,
+        black 35%,
+        rgba(0, 0, 0, 0.45) 62%,
+        transparent 96%
+    );
 }
 
 /* ─── Marquee (powered-by strip) ─── */
