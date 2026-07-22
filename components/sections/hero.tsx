@@ -2,11 +2,7 @@ import Image from "next/image";
 import {
   GlobeIcon,
   LandmarkIcon,
-  LinkIcon,
-  MailIcon,
   MessageIcon,
-  PackageIcon,
-  PhoneIcon,
 } from "@/components/icons";
 import { Container } from "@/components/ui/container";
 import { CtaLink } from "@/components/ui/cta-link";
@@ -16,71 +12,69 @@ import { Reveal } from "@/components/ui/reveal";
 import { helplineHref, helplineNumber } from "@/lib/contact";
 import { cn } from "@/lib/utils";
 
-type CapabilityCardProps = {
-  icon: React.ReactNode;
+type SpecialityCardProps = {
+  icon?: React.ReactNode;
+  eyebrow: string;
   title: string;
   description: string;
   className?: string;
+  official?: boolean;
 };
 
-function CapabilityCard({
+function SpecialityCard({
   icon,
+  eyebrow,
   title,
   description,
   className,
-}: CapabilityCardProps) {
+  official = false,
+}: SpecialityCardProps) {
   return (
     <div
       className={cn(
-        "relative z-20 w-full rounded-[1.5rem] border border-neutral-200/70 bg-white/95 p-4",
-        "shadow-[0_18px_50px_-24px_rgba(15,23,42,0.28)] backdrop-blur-xl",
-        "transition-transform duration-500 ease-out hover:-translate-y-1",
+        "relative z-20 w-full overflow-hidden rounded-[1.25rem]",
+        "border border-neutral-200/70 bg-white/95 px-3 py-3",
+        "shadow-[0_16px_38px_-24px_rgba(15,23,42,0.3)] backdrop-blur-xl",
+        "transition-[transform,box-shadow] duration-500 ease-out",
+        "hover:-translate-y-1 hover:shadow-[0_24px_50px_-24px_rgba(15,23,42,0.36)]",
+        "sm:rounded-[1.5rem] sm:p-4 transition-all",
         className,
       )}
     >
-      <div className="flex items-start gap-3.5">
-        <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-tint-blue text-brand">
-          {icon}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -top-10 -right-10 h-24 w-24 rounded-full bg-tint-blue/50 blur-3xl sm:-top-12 sm:-right-12 sm:h-28 sm:w-28"
+      />
+
+      <div className="relative flex flex-col items-start gap-2 sm:flex-row sm:gap-3.5">
+        <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-tint-blue text-brand sm:h-11 sm:w-11 sm:rounded-2xl">
+          {official ? (
+            <Image
+              src="/kp-logo.png"
+              alt=""
+              width={24}
+              height={24}
+              className="h-5 w-5 object-contain sm:h-7 sm:w-7"
+            />
+          ) : (
+            icon
+          )}
         </span>
 
         <div className="min-w-0">
-          <p className="font-nohemi text-sm font-semibold text-neutral-950 sm:text-base">
+          <p className="text-[8px] font-semibold tracking-[0.11em] text-brand uppercase sm:text-[10px] sm:tracking-[0.12em]">
+            {eyebrow}
+          </p>
+
+          <p className="font-nohemi mt-0.5 text-sm leading-tight font-semibold text-neutral-950 sm:mt-1 sm:text-base">
             {title}
           </p>
 
-          <p className="mt-1 text-xs leading-relaxed text-neutral-500 sm:text-[13px]">
+          <p className="mt-1.5 hidden text-xs leading-relaxed text-neutral-500 sm:block sm:text-[13px]">
             {description}
           </p>
         </div>
       </div>
-    </div>
-  );
-}
-
-function FloatingIcon({
-  icon,
-  className,
-  label,
-}: {
-  icon: React.ReactNode;
-  className?: string;
-  label: string;
-}) {
-  return (
-    <div
-      className={cn(
-        "flex flex-col items-center justify-center rounded-2xl px-4 py-2",
-        "border border-neutral-200/70 bg-white/90 backdrop-blur-xl",
-        "shadow-[0_18px_40px_-20px_rgba(15,23,42,0.28)]",
-        "transition-all duration-500 ease-out",
-        "hover:-translate-y-1 hover:scale-105",
-        className,
-      )}
-    >
-      <span className="text-brand">{icon}</span>
-      <p className="mt-0.5 whitespace-nowrap text-[8px] font-medium text-brand">
-        {label}
-      </p>
     </div>
   );
 }
@@ -121,10 +115,10 @@ export default function Hero() {
           </Reveal>
 
           <Reveal delay={120}>
-            <h1 className="font-nohemi mx-auto mt-6 max-w-4xl text-5xl leading-[0.98] font-bold tracking-[-0.045em] text-neutral-950 sm:text-6xl md:text-7xl lg:text-[5.25rem]">
+            <h1 className="font-nohemi mx-auto mt-6 max-w-4xl text-5xl leading-[0.98] font-bold tracking-[-0.045em] text-neutral-950 sm:text-6xl md:text-7xl lg:text-[6.25rem]">
               Stop scams{" "}
               <span className="whitespace-nowrap">
-                <span className="text-brand-gradient">before</span> you act.
+                <span className="text-brand-gradient pr-1">before</span> you act.
               </span>
             </h1>
           </Reveal>
@@ -137,9 +131,9 @@ export default function Hero() {
 
           <Reveal delay={240}>
             <p className="mx-auto mt-3 max-w-2xl text-base leading-relaxed text-neutral-500 sm:text-lg">
-              Verify suspicious websites, messages, phone numbers, emails,
-              banking details, APK files, and IP addresses before making a
-              decision.
+              Share anything suspicious and receive a clear risk assessment
+              before you click, pay, install, reply, or share personal
+              information.
             </p>
           </Reveal>
 
@@ -201,93 +195,62 @@ export default function Hero() {
             </svg>
           </Reveal>
 
-          {/* Phone fades upward first */}
+          {/* Phone */}
           <div className="absolute top-9 left-1/2 z-10 -translate-x-1/2">
             <Reveal delay={420}>
               <PhoneMockup />
             </Reveal>
           </div>
 
-          {/* IP Address */}
-          <div className="absolute top-[90px] left-30 z-20">
-            <Reveal delay={520}>
-              <CapabilityCard
-                className="w-[245px] -rotate-1"
-                icon={<GlobeIcon className="h-5 w-5" />}
-                title="IP Address"
-                description="Check whether an IP address is suspicious or unsafe."
-              />
-            </Reveal>
-          </div>
-
-          {/* Email */}
-          <div className="absolute top-[85px] right-30 z-20">
-            <Reveal delay={580}>
-              <CapabilityCard
-                className="w-[245px] rotate-1"
-                icon={<MailIcon className="h-5 w-5" />}
-                title="Email"
-                description="Inspect suspicious emails, senders, and included links."
-              />
-            </Reveal>
-          </div>
-
-          {/* SMS */}
-          <div className="absolute top-[255px] left-10 z-20">
-            <Reveal delay={640}>
-              <CapabilityCard
-                className="w-[245px] rotate-1"
+          {/* 9+ input types */}
+          {/* 9+ input types */}
+          <div className="absolute top-[90px] left-[7%] z-30">
+            <Reveal delay={540}>
+              <SpecialityCard
+                className="w-[265px] -rotate-1"
                 icon={<MessageIcon className="h-5 w-5" />}
-                title="SMS"
-                description="Review suspicious text messages and scam claims."
+                eyebrow="Flexible input"
+                title="9+ input types supported"
+                description="Send text, screenshots, audio, links, files, contact details, and other suspicious information."
               />
             </Reveal>
           </div>
 
-          {/* Bank details */}
-          <div className="absolute top-[255px] right-8 z-20">
+          {/* 40+ validation checks */}
+          <div className="absolute top-[105px] right-[6%] z-30">
+            <Reveal delay={620}>
+              <SpecialityCard
+                className="w-[275px] rotate-1"
+                icon={<GlobeIcon className="h-5 w-5" />}
+                eyebrow="Deep analysis"
+                title="40+ validations and checks"
+                description="Cyberwall examines technical, behavioural, identity, and threat-intelligence signals."
+              />
+            </Reveal>
+          </div>
+
+          {/* Clear guidance */}
+          <div className="absolute bottom-[65px] left-[8%] z-30">
             <Reveal delay={700}>
-              <CapabilityCard
-                className="w-[245px] -rotate-1"
+              <SpecialityCard
+                className="w-[270px] rotate-1"
                 icon={<LandmarkIcon className="h-5 w-5" />}
-                title="Bank Details"
-                description="Verify account details linked to suspicious payments."
+                eyebrow="Practical next steps"
+                title="Clear guidance"
+                description="Know whether to proceed, ignore, block, report, or seek immediate help."
               />
             </Reveal>
           </div>
 
-          {/* Phone number */}
-          <div className="absolute bottom-8 left-24 z-20">
-            <Reveal delay={760}>
-              <CapabilityCard
-                className="w-[245px] -rotate-1"
-                icon={<PhoneIcon className="h-5 w-5" />}
-                title="Phone Number"
-                description="Check suspicious callers and reported scam numbers."
-              />
-            </Reveal>
-          </div>
-
-          {/* APK */}
-          <div className="absolute right-20 bottom-8 z-20">
-            <Reveal delay={820}>
-              <CapabilityCard
-                className="w-[245px] rotate-1"
-                icon={<PackageIcon className="h-5 w-5" />}
-                title="APK"
-                description="Check Android application files before installing them."
-              />
-            </Reveal>
-          </div>
-
-          {/* Website under and overlapping phone */}
-          <div className="absolute bottom-0 left-1/2 z-20 -translate-x-1/2">
-            <Reveal delay={880}>
-              <CapabilityCard
-                className="w-[260px]"
-                icon={<LinkIcon className="h-5 w-5" />}
-                title="Website"
-                description="Check suspicious websites and links before opening them."
+          {/* Kerala Police initiative */}
+          <div className="absolute right-[8%] bottom-[45px] z-30">
+            <Reveal delay={780}>
+              <SpecialityCard
+                className="w-[275px] -rotate-1"
+                official
+                eyebrow="Trusted initiative"
+                title="Backed by Kerala Police"
+                description="A digital safety initiative designed to help the public make safer online decisions."
               />
             </Reveal>
           </div>
@@ -295,23 +258,22 @@ export default function Hero() {
 
         {/* Mobile and tablet visual */}
         <div className="mt-10 lg:hidden">
-          <div className="relative mx-auto h-[520px] w-[320px]">
-            {/* Mobile curved line */}
+          <div className="relative mx-auto h-[590px] w-full max-w-[350px]">            {/* Mobile curved line */}
             <Reveal delay={360}>
               <svg
                 aria-hidden="true"
-                className="pointer-events-none absolute top-0 left-1/2 z-0 h-[500px] w-[390px] -translate-x-1/2 overflow-visible"
-                viewBox="0 0 390 500"
+                className="pointer-events-none absolute top-0 left-1/2 z-0 h-[510px] w-[410px] -translate-x-1/2 overflow-visible"
+                viewBox="0 0 410 510"
                 fill="none"
                 preserveAspectRatio="none"
               >
                 <path
                   d="
-                    M-30 40
-                    C45 35 50 185 115 190
-                    S175 75 225 105
-                    S275 305 335 300
-                    S365 380 420 465
+                    M-35 42
+                    C45 35 55 185 120 190
+                    S185 72 235 108
+                    S285 310 345 300
+                    S380 390 445 470
                   "
                   stroke="url(#mobileHeroPathGradient)"
                   strokeWidth="12"
@@ -322,10 +284,10 @@ export default function Hero() {
                 <defs>
                   <linearGradient
                     id="mobileHeroPathGradient"
-                    x1="-30"
-                    y1="40"
-                    x2="420"
-                    y2="465"
+                    x1="-35"
+                    y1="42"
+                    x2="445"
+                    y2="470"
                     gradientUnits="userSpaceOnUse"
                   >
                     <stop offset="0%" stopColor="#00C8F0" />
@@ -336,79 +298,61 @@ export default function Hero() {
               </svg>
             </Reveal>
 
-            {/* Phone fades upward */}
+            {/* Phone */}
             <div className="absolute top-0 left-1/2 z-10 -translate-x-1/2">
               <Reveal delay={420}>
                 <PhoneMockup />
               </Reveal>
             </div>
 
-            {/* Website */}
-            <div className="absolute top-6 left-2 z-30">
-              <Reveal delay={520}>
-                <FloatingIcon
-                  label="Website"
-                  icon={<LinkIcon className="h-6 w-6" />}
+            {/* 9+ input types */}
+            <div className="absolute top-12 left-1 z-30">
+              <Reveal delay={540}>
+                <SpecialityCard
+                  className="w-[132px] -rotate-1"
+                  icon={<MessageIcon className="h-4 w-4 sm:h-5 sm:w-5" />}
+                  eyebrow="Flexible input"
+                  title="9+ input types"
+                  description="Text, images, audio, files, links, and more."
                 />
               </Reveal>
             </div>
 
-            {/* Email */}
-            <div className="absolute top-14 right-2 z-30">
-              <Reveal delay={580}>
-                <FloatingIcon
-                  label="Email"
-                  icon={<MailIcon className="h-6 w-6" />}
+            {/* 40+ checks */}
+            <div className="absolute top-[190px] right-1 z-30">
+              <Reveal delay={620}>
+                <SpecialityCard
+                  className="w-[132px] rotate-1"
+                  icon={<GlobeIcon className="h-4 w-4 sm:h-5 sm:w-5" />}
+                  eyebrow="Deep analysis"
+                  title="40+ checks"
+                  description="Multiple risk signals are verified together."
                 />
               </Reveal>
             </div>
 
-            {/* SMS */}
-            <div className="absolute top-52 -left-2 z-30">
-              <Reveal delay={640}>
-                <FloatingIcon
-                  label="SMS"
-                  icon={<MessageIcon className="h-6 w-6" />}
-                />
-              </Reveal>
-            </div>
-
-            {/* APK */}
-            <div className="absolute top-64 -right-2 z-30">
+            {/* Clear guidance */}
+            <div className="absolute bottom-[116px] left-1 z-30">
               <Reveal delay={700}>
-                <FloatingIcon
-                  label="APK"
-                  icon={<PackageIcon className="h-6 w-6" />}
+                <SpecialityCard
+                  className="w-[132px] rotate-1"
+                  icon={<LandmarkIcon className="h-4 w-4 sm:h-5 sm:w-5" />}
+                  eyebrow="Next steps"
+                  title="Clear guidance"
+                  description="Know whether to proceed, block, report, or seek help."
                 />
               </Reveal>
             </div>
 
-            {/* Phone number */}
-            <div className="absolute bottom-26 -left-5 z-30">
-              <Reveal delay={760}>
-                <FloatingIcon
-                  label="Phone Number"
-                  icon={<PhoneIcon className="h-6 w-6" />}
-                />
-              </Reveal>
-            </div>
-
-            {/* Bank details */}
-            <div className="absolute -right-8 bottom-22 z-30">
-              <Reveal delay={820}>
-                <FloatingIcon
-                  label="Bank Details"
-                  icon={<LandmarkIcon className="h-6 w-6" />}
-                />
-              </Reveal>
-            </div>
-
-            {/* IP address */}
-            <div className="absolute bottom-2 left-1/2 z-30 -translate-x-1/2">
-              <Reveal delay={880}>
-                <FloatingIcon
-                  label="IP Address"
-                  icon={<GlobeIcon className="h-6 w-6" />}
+            {/* Kerala Police initiative */}
+            <div className="absolute right-1 bottom-5 z-30">
+              <Reveal delay={780}>
+                <SpecialityCard
+                  className="w-[138px] -rotate-1"
+                  official
+                  eyebrow="Trusted initiative"
+                  title="Kerala Police"
+                  description="Public digital safety guidance backed by Kerala Police."
                 />
               </Reveal>
             </div>
@@ -418,4 +362,3 @@ export default function Hero() {
     </section>
   );
 }
-2;

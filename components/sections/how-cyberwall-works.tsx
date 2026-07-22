@@ -15,35 +15,35 @@ import { SectionHeading } from "@/components/ui/section-heading";
 import { TryNowButton } from "@/components/ui/platform-modal";
 import { cn } from "@/lib/utils";
 
-const PROCESS_STEPS = [
-  {
-    label: "01",
-    icon: MessageIcon,
-    title: "Share naturally",
-    subtitle: "Understand",
-    description:
-      "Just explain the situation, upload a screenshot, or send a voice note.",
-    tone: "blue" as const,
-  },
-  {
-    label: "02",
-    icon: GaugeIcon,
-    title: "Threat analysis",
-    subtitle: "Check",
-    description:
-      "The engine runs domain checks, phone checks, APK scans, and scam reports.",
-    tone: "cyan" as const,
-  },
-  {
-    label: "03",
-    icon: ShieldCheckIcon,
-    title: "Clear guidance",
-    subtitle: "Guide",
-    description:
-      "Cyberwall returns a safety score and tells you exactly what to do.",
-    tone: "lavender" as const,
-  },
-];
+// const PROCESS_STEPS = [
+//   {
+//     label: "01",
+//     icon: MessageIcon,
+//     title: "Share naturally",
+//     subtitle: "Understand",
+//     description:
+//       "Just explain the situation, upload a screenshot, or send a voice note.",
+//     tone: "blue" as const,
+//   },
+//   {
+//     label: "02",
+//     icon: GaugeIcon,
+//     title: "Threat analysis",
+//     subtitle: "Check",
+//     description:
+//       "The engine runs domain checks, phone checks, APK scans, and scam reports.",
+//     tone: "cyan" as const,
+//   },
+//   {
+//     label: "03",
+//     icon: ShieldCheckIcon,
+//     title: "Clear guidance",
+//     subtitle: "Guide",
+//     description:
+//       "Cyberwall returns a safety score and tells you exactly what to do.",
+//     tone: "lavender" as const,
+//   },
+// ];
 
 const TINT_BG = {
   blue: "bg-tint-blue",
@@ -122,7 +122,7 @@ export default function HowCyberwallWorks() {
   return (
     <>
       {/* 1 · Verification process */}
-      <section id="how-it-works" className="py-16 md:py-24">
+      {/*<section id="how-it-works" className="py-16 md:py-24">
         <Container>
           <Reveal>
             <SectionHeading
@@ -163,12 +163,18 @@ export default function HowCyberwallWorks() {
             </div>
           </Reveal>
         </Container>
-      </section>
+      </section>*/}
 
       {/* 2 · Trust Score */}
       <section className="py-16 md:py-24">
         <Container>
-          <div className="grid items-center gap-4 rounded-[2rem] border border-neutral-200/70 bg-white p-8 md:grid-cols-2 md:gap-12 md:p-12">
+          <Reveal>
+            <SectionHeading
+              eyebrow="Response"
+              title="How it responds"
+            />
+          </Reveal>
+          <div className="grid items-center mt-10 gap-4 rounded-[2rem] border border-neutral-200/70 bg-white p-8 md:grid-cols-2 md:gap-12 md:p-12">
             <Reveal>
               <div className="relative mx-auto flex max-w-sm flex-col gap-3">
                 {SCORE_CARDS.map((card, i) => (
