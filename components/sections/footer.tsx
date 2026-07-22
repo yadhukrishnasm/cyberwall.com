@@ -15,7 +15,7 @@ const LEGAL_LINKS = ["Privacy", "Terms", "Accessibility"];
 export default function Footer() {
   return (
     <footer className="overflow-hidden pt-20">
-      <div className="mx-auto w-full max-w-6xl px-5 md:px-6">
+      <div className="mx-auto w-full max-w-7xl px-5 md:px-6">
         <div className="grid gap-5 md:grid-cols-[0.85fr_1.15fr]">
           {/* Brand card */}
           <div className="brand-gradient flex min-h-72 flex-col justify-between rounded-[2rem] p-8">
@@ -28,13 +28,13 @@ export default function Footer() {
                   height={30}
                 />
               </span>
-              <span className="font-nohemi text-2xl font-bold text-white">
+              <span className="font-nunito text-2xl font-bold text-white">
                 Cyberwall
               </span>
             </div>
 
             <div>
-              <p className="font-nohemi text-xl leading-snug font-semibold text-white md:text-2xl">
+              <p className="font-nunito text-xl leading-snug font-semibold text-white md:text-2xl">
                 Verify before you trust,
                 <br />
                 <span className="text-white/70">powered by Kerala Police.</span>
@@ -57,7 +57,7 @@ export default function Footer() {
           <div className="flex flex-col justify-between rounded-[2rem] bg-white p-8">
             <div className="grid grid-cols-2 gap-8">
               <div>
-                <span className="font-nohemi text-sm font-semibold text-neutral-400">
+                <span className="font-nunito text-sm font-semibold text-neutral-400">
                   Navigation
                 </span>
                 <ul className="mt-4 space-y-3">
@@ -74,7 +74,7 @@ export default function Footer() {
                 </ul>
               </div>
               <div>
-                <span className="font-nohemi text-sm font-semibold text-neutral-400">
+                <span className="font-nunito text-sm font-semibold text-neutral-400">
                   Official
                 </span>
                 <ul className="mt-4 space-y-3">
@@ -123,7 +123,7 @@ export default function Footer() {
       {/* Giant watermark */}
       <div
         aria-hidden
-        className="watermark font-nohemi sm:mt-10 mt-4 sm:-mb-10 -mb-4 overflow-hidden text-center font-bold whitespace-nowrap"
+        className="watermark font-sans sm:mt-10 mt-4 sm:-mb-8 -mb-3 overflow-hidden text-center font-black  whitespace-nowrap"
       >
         Kerala Police
       </div>

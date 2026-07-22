@@ -1,10 +1,19 @@
 import type { Metadata } from "next";
+import { Nunito } from "next/font/google";
 import "./globals.css";
-import localFont from "next/font/local";
+
 import { GoogleAnalytics } from "@/components/google-analytics";
-import { siteUrl, siteDescription } from "@/lib/site";
+import { siteDescription, siteUrl } from "@/lib/site";
 
 const ENTITY_SENTENCE = siteDescription;
+
+const nunito = Nunito({
+  subsets: ["latin"],
+  variable: "--font-nunito",
+  display: "swap",
+  preload: true,
+  fallback: ["Arial", "sans-serif"],
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -72,29 +81,28 @@ const SERVICE_JSON_LD = {
   isAccessibleForFree: true,
 };
 
-const nohemi = localFont({
-  src: "../fonts/Nohemi-VF.ttf",
-  variable: "--font-nohemi",
-  display: "swap",
-});
-
 export default function RootLayout({
   children,
-}: {
+}: Readonly<{
   children: React.ReactNode;
-}) {
+}>) {
   return (
-    <html lang="en" className={nohemi.variable}>
-      <body className="min-h-screen text-neutral-950 antialiased">
+    <html lang="en" className={nunito.variable}>
+      <body className="min-h-screen font-sans text-neutral-950 antialiased">
         {children}
 
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(ORG_JSON_LD) }}
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(ORG_JSON_LD),
+          }}
         />
+
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(SERVICE_JSON_LD) }}
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(SERVICE_JSON_LD),
+          }}
         />
 
         <GoogleAnalytics />

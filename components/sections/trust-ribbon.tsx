@@ -33,7 +33,7 @@ export default function TrustRibbon() {
                   {i > 0 && (
                     <span className="h-1 w-1 rounded-full bg-white/40" />
                   )}
-                  <span className="font-nohemi text-sm font-bold text-white">
+                  <span className="font-nunito text-sm font-bold text-white">
                     {badge}
                   </span>
                 </span>

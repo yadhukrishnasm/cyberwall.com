@@ -36,7 +36,7 @@ export function CollageTile({
         <Icon className="h-6 w-6 text-brand" strokeWidth={1.5} />
       </span>
       <div className="relative">
-        <h3 className="font-nohemi line-clamp-2 text-base leading-snug font-bold text-neutral-950 md:text-lg">
+        <h3 className="font-nunito line-clamp-2 text-base leading-snug font-bold text-neutral-950 md:text-lg">
           {title}
         </h3>
         <p className="mt-1.5 line-clamp-2 text-sm leading-relaxed text-neutral-600">

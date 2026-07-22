@@ -53,7 +53,7 @@ export default function FAQPage() {
       <Navbar />
       <main className="pt-16 pb-24 md:pt-20">
         <Container>
-          <h1 className="font-nohemi mt-6 text-4xl font-bold tracking-tight text-neutral-950 md:text-5xl">
+          <h1 className="font-nunito mt-6 text-4xl font-bold tracking-tight text-neutral-950 md:text-5xl">
             Frequently asked questions
           </h1>
           <p className="mt-4 max-w-xl text-base leading-relaxed text-neutral-600 md:text-lg">
@@ -63,7 +63,7 @@ export default function FAQPage() {
           <div className="mt-12 space-y-12">
             {FAQ_GROUPS.map((group) => (
               <section key={group.category}>
-                <h2 className="font-nohemi text-sm font-semibold text-brand">
+                <h2 className="font-nunito text-sm font-semibold text-brand">
                   {group.category}
                 </h2>
                 <div className="mt-4 space-y-3">

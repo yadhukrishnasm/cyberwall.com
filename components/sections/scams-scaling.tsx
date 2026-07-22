@@ -35,7 +35,7 @@ export default function ScamsScaling() {
             {STATS.map((stat, i) => (
               <Reveal key={stat.label} delay={i * 100}>
                 <div className="h-full rounded-[1.5rem] border border-white/10 bg-white/5 p-7">
-                  <p className="font-nohemi text-brand-gradient text-4xl font-bold md:text-5xl">
+                  <p className="font-nunito text-brand-gradient text-4xl font-bold md:text-5xl">
                     {stat.value}
                   </p>
                   <p className="mt-3 text-base leading-relaxed text-neutral-400">

@@ -132,7 +132,7 @@ export default function VerifyChannels() {
                     <div>
                       <span
                         className={cn(
-                          "font-nohemi block text-xl font-bold",
+                          "font-nunito block text-xl font-bold",
                           platform.featured ? "text-white" : "text-neutral-950",
                         )}
                       >

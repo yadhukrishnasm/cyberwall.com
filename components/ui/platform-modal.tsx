@@ -122,7 +122,7 @@ export function PlatformModal() {
       <div className="p-6 md:p-8">
         <div className="flex items-start justify-between gap-4">
           <div>
-            <h2 className="font-nohemi text-2xl font-bold tracking-tight text-neutral-950 md:text-3xl">
+            <h2 className="font-nunito text-2xl font-bold tracking-tight text-neutral-950 md:text-3xl">
               Choose how to verify
             </h2>
             <p className="mt-1.5 text-base text-neutral-600">
@@ -178,7 +178,7 @@ export function PlatformModal() {
                   >
                     <platform.icon className="h-full w-full object-contain" />
                   </span>
-                  <span className="font-nohemi text-lg font-bold text-neutral-950">
+                  <span className="font-nunito text-lg font-bold text-neutral-950">
                     {platform.name}
                   </span>
                 </div>

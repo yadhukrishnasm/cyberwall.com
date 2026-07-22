@@ -1,7 +1,8 @@
 @import "tailwindcss";
 
 @theme inline {
-    --font-nohemi: var(--font-nohemi);
+    --font-sans: var(--font-sans);
+    --font-nunito: var(--font-nunito);
 }
 
 /* ─── Color tokens — single source of truth for every custom color used
@@ -105,7 +106,7 @@ html {
 
 /* ─── Giant footer watermark (Kresna-style) ─── */
 .watermark {
-    font-size: clamp(2rem, 18vw, 18rem);
+    font-size: clamp(2rem, 18vw, 28rem);
     line-height: 0.78;
     letter-spacing: -0.04em;
     background-image: linear-gradient(

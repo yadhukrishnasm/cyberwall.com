@@ -12,13 +12,13 @@ import {
   TypeIcon,
 } from "@/components/icons";
 import { Container } from "@/components/ui/container";
-import { IconBox } from "@/components/ui/primitives";
 import { Reveal } from "@/components/ui/reveal";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { cn } from "@/lib/utils";
 
 type IconType = ComponentType<SVGProps<SVGSVGElement>>;
 type Tone = "blue" | "cyan" | "lavender";
+type CardSpan = "normal" | "wide";
 
 type VisualItem = {
   label: string;
@@ -26,6 +26,7 @@ type VisualItem = {
   icon: IconType;
   tone: Tone;
   preview: ReactNode;
+  span?: CardSpan;
 };
 
 const TINT_BG: Record<Tone, string> = {
@@ -130,6 +131,7 @@ const ANALYSIS_TARGETS: VisualItem[] = [
       "Verify suspicious websites and links before opening or sharing them.",
     icon: LinkIcon,
     tone: "blue",
+    span:"wide",
     preview: (
       <div className="w-full max-w-[15rem] rounded-2xl border border-neutral-200/70 bg-white p-3 shadow-sm">
         <div className="flex items-center gap-2">
@@ -197,7 +199,7 @@ const ANALYSIS_TARGETS: VisualItem[] = [
           </div>
 
           <div className="min-w-0">
-            <p className="font-nohemi truncate text-xs font-semibold text-neutral-950">
+            <p className="font-nunito truncate text-xs font-semibold text-neutral-950">
               +91 98765 43210
             </p>
 
@@ -309,6 +311,7 @@ const ANALYSIS_TARGETS: VisualItem[] = [
       "Check infrastructure, location information, and suspicious risk signals.",
     icon: GlobeIcon,
     tone: "cyan",
+    // span: "wide",
     preview: (
       <div className="w-full max-w-[14rem] rounded-2xl border border-neutral-800 bg-neutral-950 px-4 py-3 shadow-sm">
         <div className="flex items-center justify-between">
@@ -342,36 +345,69 @@ function VisualCard({
   item: VisualItem;
   index: number;
 }) {
-  const Icon = item.icon;
-
   return (
-    <Reveal delay={index * 60}>
-      <article className="group h-full">
+    <Reveal
+      delay={index * 60}
+      className={cn(
+        "h-full min-w-0",
+        item.span === "wide" && "sm:col-span-2 lg:col-span-2",
+      )}
+    >
+      <article className="group flex h-full min-w-0 flex-col">
         <div
           className={cn(
-            "relative flex h-[15rem] items-center justify-center overflow-hidden rounded-[2rem] p-6",
+            "relative isolate flex min-h-[15rem] flex-1 items-center justify-center overflow-hidden rounded-[2rem]",
+            "px-4 py-8 sm:min-h-[17rem] sm:px-6 sm:py-10",
+            item.span === "wide" && "sm:min-h-[16rem]",
             TINT_BG[item.tone],
           )}
         >
-          <div className="absolute top-5 left-5">
-            <IconBox icon={Icon} tone="white" size="sm" />
-          </div>
+          {/* Safari-safe decorative layers */}
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute -right-12 -bottom-14 h-44 w-44 rounded-full bg-white/40"
+            style={{
+              filter: "blur(48px)",
+              WebkitFilter: "blur(48px)",
+              transform: "translateZ(0)",
+            }}
+          />
 
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute -right-10 -bottom-12 h-36 w-36 rounded-full bg-white/35 blur-3xl"
+            className="pointer-events-none absolute -top-16 -left-12 h-36 w-36 rounded-full bg-white/25"
+            style={{
+              filter: "blur(42px)",
+              WebkitFilter: "blur(42px)",
+              transform: "translateZ(0)",
+            }}
           />
 
-          <div className="relative flex w-full justify-center transition-transform duration-500 ease-out group-hover:-translate-y-1">
+          {/* Existing preview object, enlarged */}
+          <div
+            className={cn(
+              "relative z-10 flex w-full min-w-0 origin-center justify-center",
+              "transform-gpu will-change-transform",
+              "transition-transform duration-500 ease-out",
+              "scale-[1.08] group-hover:scale-[1.12]",
+              "sm:scale-[1.16] sm:group-hover:scale-[1.2]",
+              item.span === "wide" &&
+                "sm:scale-[1.22] sm:group-hover:scale-[1.26]",
+            )}
+            style={{
+              WebkitBackfaceVisibility: "hidden",
+              backfaceVisibility: "hidden",
+            }}
+          >
             {item.preview}
           </div>
         </div>
 
-        <h3 className="font-nohemi mt-5 text-xl font-bold text-neutral-950">
+        <h3 className="font-nunito mt-4 text-lg leading-tight font-bold text-neutral-950 sm:mt-5 sm:text-xl">
           {item.label}
         </h3>
 
-        <p className="mt-2 text-sm leading-relaxed text-neutral-600">
+        <p className="mt-1.5 text-sm leading-relaxed text-neutral-600 sm:mt-2">
           {item.description}
         </p>
       </article>
@@ -392,32 +428,38 @@ export default function WhatCanISend() {
         </Reveal>
 
         {/* Input methods */}
-        <div className="mt-12">
+        <div className="mt-10 sm:mt-12">
           <Reveal>
-            <div className="flex flex-col gap-2 border-b border-neutral-200/70 pb-5 sm:flex-row sm:items-end sm:justify-between">
-              <div>
-                <p className="font-nohemi text-sm font-bold text-brand">
-                  Input Methods
+            <div className="border-b border-neutral-200/70 pb-5">
+              <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+                <div>
+                  <p className="text-xs font-bold tracking-[0.12em] text-brand uppercase sm:text-sm sm:normal-case sm:tracking-normal">
+                    Input Methods
+                  </p>
+
+                  <h3 className="font-nunito mt-1.5 text-xl leading-tight font-bold text-neutral-950 sm:text-2xl">
+                    How you send
+                  </h3>
+                </div>
+
+                <p className="text-sm leading-relaxed text-neutral-500">
+                  Text, image, or audio
                 </p>
-
-                <h3 className="font-nohemi mt-1 text-2xl font-bold text-neutral-950">
-                  How you send
-                </h3>
               </div>
-
-              <p className="text-sm text-neutral-500">
-                Text, image, or audio
-              </p>
             </div>
           </Reveal>
 
-          <div className="mt-6 grid gap-x-4 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-6 grid grid-cols-1 gap-x-4 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
             {INPUT_METHODS.map((item, index) => (
-              <VisualCard
+              <div
                 key={item.label}
-                item={item}
-                index={index}
-              />
+                className={cn(
+                  "min-w-0",
+                  index === 2 && "sm:col-span-2 lg:col-span-1",
+                )}
+              >
+                <VisualCard item={item} index={index} />
+              </div>
             ))}
           </div>
         </div>
@@ -425,24 +467,24 @@ export default function WhatCanISend() {
         {/* Analysis targets */}
         <div className="mt-20 md:mt-24">
           <Reveal>
-            <div className="flex flex-col gap-2 border-b border-neutral-200/70 pb-5 sm:flex-row sm:items-end sm:justify-between">
-              <div>
-                <p className="font-nohemi text-sm font-bold text-brand">
-                  Analysis Targets
-                </p>
+            <div className="border-b border-neutral-200/70 pb-5">
+              <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+                <div>
+                  <p className="text-xs font-bold tracking-[0.12em] text-brand uppercase sm:text-sm sm:normal-case sm:tracking-normal">
+                    Analysis Targets
+                  </p>
 
-                <h3 className="font-nohemi mt-1 text-2xl font-bold text-neutral-950">
-                  What we verify
-                </h3>
+                  <h3 className="font-nunito mt-1.5 text-xl leading-tight font-bold text-neutral-950 sm:text-2xl">
+                    What we verify
+                  </h3>
+                </div>
+
+
               </div>
-
-              <p className="text-sm text-neutral-500">
-                Seven supported indicators
-              </p>
             </div>
           </Reveal>
 
-          <div className="mt-6 grid gap-x-4 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-6 grid grid-cols-1 gap-x-4 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
             {ANALYSIS_TARGETS.map((item, index) => (
               <VisualCard
                 key={item.label}

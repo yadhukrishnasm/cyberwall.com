@@ -30,7 +30,7 @@ export function PhoneMockup() {
             </span>
 
             <div className="min-w-0 flex-1 leading-tight">
-              <p className="font-nohemi truncate text-[11px] font-semibold text-neutral-950">
+              <p className="font-nunito truncate text-[11px] font-semibold text-neutral-950">
                 CyberWall
               </p>
 

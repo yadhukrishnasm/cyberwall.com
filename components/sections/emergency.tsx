@@ -23,7 +23,7 @@ export default function Emergency() {
                 className="bg-flow-red-border/15 text-flow-red-border"
                 size="lg"
               />
-              <h2 className="font-nohemi mt-6 text-3xl font-bold tracking-tight text-neutral-950 md:text-4xl">
+              <h2 className="font-nunito mt-6 text-3xl font-bold tracking-tight text-neutral-950 md:text-4xl">
                 Already transferred money?
               </h2>
               <p className="mt-4 max-w-md text-base leading-relaxed text-neutral-600">
@@ -51,7 +51,7 @@ export default function Emergency() {
                   key={step}
                   className="flex items-center gap-4 rounded-2xl border border-flow-red-border/20 bg-white/70 p-5"
                 >
-                  <span className="font-nohemi flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-flow-red-border text-base font-bold text-white">
+                  <span className="font-nunito flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-flow-red-border text-base font-bold text-white">
                     {i + 1}
                   </span>
                   <span className="text-base font-medium text-neutral-800">

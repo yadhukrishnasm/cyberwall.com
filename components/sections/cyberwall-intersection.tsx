@@ -551,7 +551,7 @@ function DesktopTimelineStep({
       }}
     >
       <span
-        className="pointer-events-none absolute left-1/2 top-1/2 -z-10 select-none font-nohemi text-[5.25rem] font-black leading-none xl:text-[9rem]"
+        className="pointer-events-none absolute left-1/2 top-1/2 -z-10 select-none font-nunito text-[5.25rem] font-black leading-none xl:text-[9rem]"
         style={{
           color: step.accent,
           opacity: 0.045,
@@ -597,7 +597,7 @@ function DesktopTimelineStep({
       >
         <StepEyebrow step={step} />
 
-        <h3 className="mt-3 font-nohemi text-lg font-bold leading-snug text-neutral-950 xl:text-xl">
+        <h3 className="mt-3 font-nunito text-lg font-bold leading-snug text-neutral-950 xl:text-xl">
           {step.title}
         </h3>
 
@@ -901,7 +901,7 @@ function MobileTimelineStep({
         )}
       >
         <span
-          className="font-nohemi text-[0.65rem] font-bold uppercase"
+          className="font-nunito text-[0.65rem] font-bold uppercase"
           style={{
             color: step.accent,
           }}
@@ -909,7 +909,7 @@ function MobileTimelineStep({
           {step.label} · {step.eyebrow}
         </span>
 
-        <h3 className="mt-3 font-nohemi text-lg font-bold text-neutral-950">
+        <h3 className="mt-3 font-nunito text-lg font-bold text-neutral-950">
           {step.title}
         </h3>
 
@@ -955,7 +955,7 @@ function StepEyebrow({
   return (
     <div className="flex items-center gap-3">
       <span
-        className="whitespace-nowrap rounded-full px-2.5 py-1 font-nohemi text-xs font-medium "
+        className="whitespace-nowrap rounded-full px-2.5 py-1 font-nunito text-xs font-medium "
         style={{
           color: step.accent,
           backgroundColor: `${step.accent}12`,

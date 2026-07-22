@@ -141,12 +141,12 @@ export default function HowCyberwallWorks() {
                   )}
                 >
                   <div className="flex items-center justify-between">
-                    <span className="font-nohemi text-sm font-bold text-brand">
+                    <span className="font-nunito text-sm font-bold text-brand">
                       {step.label} · {step.subtitle}
                     </span>
                     <IconBox icon={step.icon} tone="white" />
                   </div>
-                  <h3 className="font-nohemi mt-8 text-2xl font-bold text-neutral-950">
+                  <h3 className="font-nunito mt-8 text-2xl font-bold text-neutral-950">
                     {step.title}
                   </h3>
                   <p className="mt-3 text-base leading-relaxed text-neutral-600">
@@ -168,12 +168,6 @@ export default function HowCyberwallWorks() {
       {/* 2 · Trust Score */}
       <section className="py-16 md:py-24">
         <Container>
-          <Reveal>
-            <SectionHeading
-              eyebrow="Response"
-              title="How it responds"
-            />
-          </Reveal>
           <div className="grid items-center mt-10 gap-4 rounded-[2rem] border border-neutral-200/70 bg-white p-8 md:grid-cols-2 md:gap-12 md:p-12">
             <Reveal>
               <div className="relative mx-auto flex max-w-sm flex-col gap-3">
@@ -190,7 +184,7 @@ export default function HowCyberwallWorks() {
                     )}
                   >
                     <span className={cn("h-3 w-3 rounded-full", card.dot)} />
-                    <span className="font-nohemi text-3xl font-bold text-neutral-950">
+                    <span className="font-nunito text-3xl font-bold text-neutral-950">
                       {card.score}
                       <span className="text-base font-medium text-neutral-400">
                         /100
@@ -206,10 +200,10 @@ export default function HowCyberwallWorks() {
 
             <Reveal delay={100}>
               <SectionHeading
-                eyebrow="The analysis output"
-                title="Trust Score"
+                eyebrow="Analysis Output"
+                title="Trust Score & Recommendations"
               />
-              <p className="mt-5 text-base leading-relaxed text-neutral-600 md:text-lg">
+              <p className="mt-5 text-base leading-relaxed text-neutral-600 md:text-lg font-nunito">
                 Every relevant analysis includes a Trust Score, a clear
                 explanation, and recommended next steps. It gives you a single,
                 unambiguous metric to decide before you act.

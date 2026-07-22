@@ -27,7 +27,7 @@ export function Navbar() {
             height={50}
             className=" w-auto"
           />
-          {/*<span className="font-nohemi hidden text-lg font-bold tracking-tight sm:inline">
+          {/*<span className="font-nunito hidden text-lg font-bold tracking-tight sm:inline">
             Cyberwall
           </span>*/}
         </Link>

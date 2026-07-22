@@ -21,7 +21,7 @@ export function SectionHeading({
       {eyebrow && <Eyebrow tone={tone}>{eyebrow}</Eyebrow>}
       <h2
         className={cn(
-          "font-nohemi mt-5 text-3xl leading-[1.06] font-bold tracking-tight text-balance sm:text-4xl md:text-5xl",
+          "font-nunito mt-5 text-3xl leading-[1.06] font-bold tracking-tight text-balance sm:text-4xl md:text-5xl",
           align === "center" ? "mx-auto max-w-3xl" : "max-w-2xl",
           tone === "dark" ? "text-white" : "text-neutral-950",
         )}
