@@ -1,9 +1,5 @@
 import Image from "next/image";
-import {
-  GlobeIcon,
-  LandmarkIcon,
-  MessageIcon,
-} from "@/components/icons";
+import { GlobeIcon, LandmarkIcon, MessageIcon } from "@/components/icons";
 import { Container } from "@/components/ui/container";
 import { CtaLink } from "@/components/ui/cta-link";
 import { PhoneMockup } from "@/components/ui/phone-mockup";
@@ -218,29 +214,12 @@ export default function Hero() {
       <Container className="relative z-10">
         {/* Hero content */}
         <div className="mx-auto max-w-4xl text-center">
-          <Reveal>
-            <div className="inline-flex items-center gap-2.5 rounded-full border border-neutral-200/80 bg-white py-1.5 pr-4 pl-1.5 shadow-sm shadow-neutral-950/5">
-              <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-tint-blue p-1">
-                <Image
-                  alt="Kerala Police logo"
-                  src="/kp-logo.png"
-                  height={20}
-                  width={20}
-                  priority
-                />
-              </span>
-
-              <span className="font-nunito text-xs font-semibold text-neutral-700 sm:text-sm">
-                Official Kerala Police Initiative
-              </span>
-            </div>
-          </Reveal>
-
           <Reveal delay={120}>
             <h1 className="mx-auto mt-6 max-w-4xl font-nunito text-5xl leading-[0.98] font-bold tracking-[-0.045em] text-neutral-950 sm:text-6xl md:text-7xl lg:text-[6.25rem]">
               Stop scams{" "}
               <span className="whitespace-nowrap">
-                <span className="text-brand-gradient pr-1">before</span> you act.
+                <span className="text-brand-gradient pr-1">before</span> you
+                act.
               </span>
             </h1>
           </Reveal>
@@ -425,9 +404,7 @@ export default function Hero() {
             <div className="absolute top-12 left-1 z-30 w-[132px] -rotate-1">
               <div className="hero-card-enter-1">
                 <SpecialityCard
-                  icon={
-                    <MessageIcon className="h-4 w-4 sm:h-5 sm:w-5" />
-                  }
+                  icon={<MessageIcon className="h-4 w-4 sm:h-5 sm:w-5" />}
                   eyebrow="Flexible input"
                   title="9+ input types"
                   description="Text, images, audio, files, links, and more."
@@ -451,9 +428,7 @@ export default function Hero() {
             <div className="absolute bottom-[116px] left-1 z-30 w-[132px] rotate-1">
               <div className="hero-card-enter-3">
                 <SpecialityCard
-                  icon={
-                    <LandmarkIcon className="h-4 w-4 sm:h-5 sm:w-5" />
-                  }
+                  icon={<LandmarkIcon className="h-4 w-4 sm:h-5 sm:w-5" />}
                   eyebrow="Next steps"
                   title="Clear guidance"
                   description="Know whether to proceed, block, report, or seek help."
