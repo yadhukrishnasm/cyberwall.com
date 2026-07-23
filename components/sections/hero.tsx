@@ -214,6 +214,24 @@ export default function Hero() {
       <Container className="relative z-10">
         {/* Hero content */}
         <div className="mx-auto max-w-4xl text-center">
+          <Reveal>
+            <div className="inline-flex items-center gap-2.5 rounded-full border border-neutral-200/80 bg-white py-1.5 pr-4 pl-1.5 shadow-sm shadow-neutral-950/5">
+              <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-tint-blue p-1">
+                <Image
+                  alt="Kerala Police logo"
+                  src="/kp-logo.png"
+                  height={20}
+                  width={20}
+                  priority
+                />
+              </span>
+
+              <span className="font-nunito text-xs font-semibold text-neutral-700 sm:text-sm">
+                Official Kerala Police Initiative
+              </span>
+            </div>
+          </Reveal>
+
           <Reveal delay={120}>
             <h1 className="mx-auto mt-6 max-w-4xl font-nunito text-5xl leading-[0.98] font-bold tracking-[-0.045em] text-neutral-950 sm:text-6xl md:text-7xl lg:text-[6.25rem]">
               Stop scams{" "}

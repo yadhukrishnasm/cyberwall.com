@@ -1,3 +1,4 @@
+import { CyberwallInterceptionStory } from "@/components/sections/cyberwall-intersection";
 import Emergency from "@/components/sections/emergency";
 import FaqPreview from "@/components/sections/faq-preview";
 import FinalCta from "@/components/sections/final-cta";
@@ -31,6 +32,7 @@ export default function HomePage() {
         <Hero />
         <TrustRibbon />
         <WhyCyberwall />
+        <CyberwallInterceptionStory />
         <WhatCanISend />
         <VerifyChannels />
         <HowCyberwallWorks />

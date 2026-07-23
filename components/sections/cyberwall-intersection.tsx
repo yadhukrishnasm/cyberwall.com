@@ -14,11 +14,7 @@ import {
   type MotionValue,
 } from "framer-motion";
 
-import {
-  GaugeIcon,
-  MessageIcon,
-  ShieldCheckIcon,
-} from "@/components/icons";
+import { GaugeIcon, MessageIcon, ShieldCheckIcon } from "@/components/icons";
 import { Container } from "@/components/ui/container";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { cn } from "@/lib/utils";
@@ -75,7 +71,6 @@ const MOBILE_NODE_SIZE = 40;
  */
 const MOBILE_LINE_WIDTH = 10;
 
-
 /**
  * Background line color.
  *
@@ -125,12 +120,7 @@ type StoryIcon = ComponentType<{
   className?: string;
 }>;
 
-type StoryTone =
-  | "neutral"
-  | "lavender"
-  | "blue"
-  | "cyan"
-  | "success";
+type StoryTone = "neutral" | "lavender" | "blue" | "cyan" | "success";
 
 type StoryStep = {
   label: string;
@@ -155,11 +145,7 @@ type TimelineGeometry = {
 /*                              Custom final icon                             */
 /* -------------------------------------------------------------------------- */
 
-function ProtectedActionIcon({
-  className,
-}: {
-  className?: string;
-}) {
+function ProtectedActionIcon({ className }: { className?: string }) {
   return (
     <svg
       viewBox="0 0 24 24"
@@ -167,13 +153,7 @@ function ProtectedActionIcon({
       className={className}
       aria-hidden="true"
     >
-      <circle
-        cx="12"
-        cy="12"
-        r="9"
-        stroke="currentColor"
-        strokeWidth="2"
-      />
+      <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="2" />
 
       <path
         d="m7.5 12 3 3 6-7"
@@ -333,11 +313,7 @@ function DesktopInterceptionScene({
   /**
    * Controls when the desktop line becomes visible.
    */
-  const lineOpacity = useTransform(
-    progress,
-    [0, 0.015, 1],
-    [0, 1, 1],
-  );
+  const lineOpacity = useTransform(progress, [0, 0.015, 1], [0, 1, 1]);
 
   /**
    * Controls when the desktop line finishes drawing.
@@ -346,19 +322,12 @@ function DesktopInterceptionScene({
    * - Lower value = finishes sooner.
    * - Higher value = finishes later.
    */
-  const lineProgress = useTransform(
-    progress,
-    [0, 0.9],
-    [0, 1],
-  );
+  const lineProgress = useTransform(progress, [0, 0.9], [0, 1]);
 
   return (
     <div className="relative mx-auto h-full w-full max-w-[1440px] px-8 xl:px-12">
       <div className="relative h-full w-full pb-6 pt-16">
-        <DesktopTimelineLine
-          progress={lineProgress}
-          opacity={lineOpacity}
-        />
+        <DesktopTimelineLine progress={lineProgress} opacity={lineOpacity} />
 
         {STORY_STEPS.map((step, index) => (
           <DesktopTimelineStep
@@ -406,38 +375,17 @@ function DesktopTimelineLine({
           x2="50"
           y2="94"
         >
-          <stop
-            offset="0%"
-            stopColor="var(--color-cyan)"
-          />
+          <stop offset="0%" stopColor="var(--color-cyan)" />
 
-          <stop
-            offset="38%"
-            stopColor="var(--color-brand)"
-          />
+          <stop offset="38%" stopColor="var(--color-brand)" />
 
-          <stop
-            offset="72%"
-            stopColor="var(--color-brand)"
-          />
+          <stop offset="72%" stopColor="var(--color-brand)" />
 
-          <stop
-            offset="100%"
-            stopColor="var(--color-brand-deep)"
-          />
+          <stop offset="100%" stopColor="var(--color-brand-deep)" />
         </linearGradient>
 
-        <mask
-          id="cyberwallDesktopInterceptionMask"
-          maskUnits="userSpaceOnUse"
-        >
-          <rect
-            x="0"
-            y="0"
-            width="100"
-            height="100"
-            fill="black"
-          />
+        <mask id="cyberwallDesktopInterceptionMask" maskUnits="userSpaceOnUse">
+          <rect x="0" y="0" width="100" height="100" fill="black" />
 
           <motion.path
             d={STORY_PATH}
@@ -489,13 +437,9 @@ function DesktopTimelineStep({
    * Smaller ranges create faster animation.
    * Larger ranges create slower animation.
    */
-  const revealStart = isLastStep
-    ? step.revealAt - 0.025
-    : step.revealAt - 0.07;
+  const revealStart = isLastStep ? step.revealAt - 0.025 : step.revealAt - 0.07;
 
-  const revealEnd = isLastStep
-    ? step.revealAt
-    : step.revealAt + 0.07;
+  const revealEnd = isLastStep ? step.revealAt : step.revealAt + 0.07;
 
   /**
    * Controls how quickly each card appears after its node.
@@ -504,21 +448,11 @@ function DesktopTimelineStep({
     ? step.revealAt - 0.018
     : step.revealAt - 0.02;
 
-  const cardRevealEnd = isLastStep
-    ? step.revealAt
-    : step.revealAt + 0.1;
+  const cardRevealEnd = isLastStep ? step.revealAt : step.revealAt + 0.1;
 
-  const opacity = useTransform(
-    progress,
-    [revealStart, revealEnd],
-    [0, 1],
-  );
+  const opacity = useTransform(progress, [revealStart, revealEnd], [0, 1]);
 
-  const nodeScale = useTransform(
-    progress,
-    [revealStart, revealEnd],
-    [0.72, 1],
-  );
+  const nodeScale = useTransform(progress, [revealStart, revealEnd], [0.72, 1]);
 
   const cardOpacity = useTransform(
     progress,
@@ -554,17 +488,15 @@ function DesktopTimelineStep({
         className="pointer-events-none absolute left-1/2 top-1/2 -z-10 select-none font-nunito text-[5.25rem] font-black leading-none xl:text-[9rem]"
         style={{
           color: step.accent,
-          opacity: 0.045,
+          opacity: 0.45,
           transform:
-            index % 2 === 0
-              ? "translate(-18%, -66%)"
-              : "translate(-102%, -18%)",
+            index % 2 === 0 ? "translate(-18%, -66%)" : "translate(-89%, -40%)",
         }}
       >
         {step.label}
       </span>
 
-      <motion.div
+      {/*<motion.div
         style={{
           opacity,
           scale: nodeScale,
@@ -580,7 +512,7 @@ function DesktopTimelineStep({
         >
           <Icon className="h-5 w-5 text-white" />
         </div>
-      </motion.div>
+      </motion.div>*/}
 
       <motion.div
         style={{
@@ -591,8 +523,8 @@ function DesktopTimelineStep({
         className={cn(
           "absolute top-1/2 z-10 w-[18rem] -translate-y-1/2 rounded-[1.4rem] border border-neutral-200/80 bg-white p-5 shadow-[0_16px_45px_rgba(15,23,42,0.08)] xl:w-[20rem]",
           cardOnLeft
-            ? "right-[4.75rem] xl:right-[5.25rem]"
-            : "left-[4.75rem] xl:left-[5.25rem]",
+            ? "right-[1.75rem] xl:right-[2rem]"
+            : "left-[1.75rem] xl:left-[2rem]",
         )}
       >
         <StepEyebrow step={step} />
@@ -626,10 +558,7 @@ function MobileInterceptionStory() {
 
   const { scrollYProgress } = useScroll({
     target: timelineRef,
-    offset: [
-      MOBILE_SCROLL_START,
-      MOBILE_SCROLL_END,
-    ],
+    offset: [MOBILE_SCROLL_START, MOBILE_SCROLL_END],
   });
 
   const lineProgress = useTransform(
@@ -649,10 +578,7 @@ function MobileInterceptionStory() {
           />
         </Reveal>
 
-        <div
-          ref={timelineRef}
-          className="relative mt-10"
-        >
+        <div ref={timelineRef} className="relative mt-10">
           <MobileTimelineLine
             top={geometry.top}
             height={geometry.height}
@@ -661,10 +587,7 @@ function MobileInterceptionStory() {
 
           <div className={MOBILE_CARD_SPACING}>
             {STORY_STEPS.map((step, index) => (
-              <Reveal
-                key={step.label}
-                delay={index * 80}
-              >
+              <Reveal key={step.label} delay={index * 80}>
                 <MobileTimelineStep
                   step={step}
                   nodeRef={
@@ -717,31 +640,21 @@ function useTimelineGeometry({
     }
 
     const updateGeometry = () => {
-      const timelineRect =
-        timeline.getBoundingClientRect();
+      const timelineRect = timeline.getBoundingClientRect();
 
-      const firstNodeRect =
-        firstNode.getBoundingClientRect();
+      const firstNodeRect = firstNode.getBoundingClientRect();
 
-      const lastNodeRect =
-        lastNode.getBoundingClientRect();
+      const lastNodeRect = lastNode.getBoundingClientRect();
 
       const firstNodeCenter =
-        firstNodeRect.top +
-        firstNodeRect.height / 2 -
-        timelineRect.top;
+        firstNodeRect.top + firstNodeRect.height / 2 - timelineRect.top;
 
       const lastNodeCenter =
-        lastNodeRect.top +
-        lastNodeRect.height / 2 -
-        timelineRect.top;
+        lastNodeRect.top + lastNodeRect.height / 2 - timelineRect.top;
 
       setGeometry({
         top: firstNodeCenter,
-        height: Math.max(
-          0,
-          lastNodeCenter - firstNodeCenter,
-        ),
+        height: Math.max(0, lastNodeCenter - firstNodeCenter),
       });
     };
 
@@ -764,10 +677,7 @@ function useTimelineGeometry({
     return () => {
       cancelAnimationFrame(frame);
       observer.disconnect();
-      window.removeEventListener(
-        "resize",
-        updateGeometry,
-      );
+      window.removeEventListener("resize", updateGeometry);
     };
   }, [timelineRef, firstNodeRef, lastNodeRef]);
 
@@ -792,9 +702,7 @@ function MobileTimelineLine({
    *
    * The node starts at left: 0 and has width MOBILE_NODE_SIZE.
    */
-  const left =
-    MOBILE_NODE_SIZE / 2 -
-    MOBILE_LINE_WIDTH / 2;
+  const left = MOBILE_NODE_SIZE / 2 - MOBILE_LINE_WIDTH / 2;
 
   /**
    * The visible line is centred within the SVG canvas.
@@ -829,25 +737,13 @@ function MobileTimelineLine({
           x2={lineX}
           y2={height}
         >
-          <stop
-            offset="0%"
-            stopColor="var(--color-cyan)"
-          />
+          <stop offset="0%" stopColor="var(--color-cyan)" />
 
-          <stop
-            offset="38%"
-            stopColor="var(--color-brand)"
-          />
+          <stop offset="38%" stopColor="var(--color-brand)" />
 
-          <stop
-            offset="72%"
-            stopColor="var(--color-brand)"
-          />
+          <stop offset="72%" stopColor="var(--color-brand)" />
 
-          <stop
-            offset="100%"
-            stopColor="var(--color-brand-deep)"
-          />
+          <stop offset="100%" stopColor="var(--color-brand-deep)" />
         </linearGradient>
       </defs>
 
@@ -888,18 +784,9 @@ function MobileTimelineStep({
 
   return (
     <div className="relative pl-14">
-      <MobileTimelineNode
-        ref={nodeRef}
-        accent={step.accent}
-        icon={Icon}
-      />
+      <MobileTimelineNode ref={nodeRef} accent={step.accent} icon={Icon} />
 
-      <div
-        className={cn(
-          "rounded-[1.4rem] p-5",
-          TONE_CLASSES[step.tone],
-        )}
-      >
+      <div className={cn("rounded-[1.4rem] p-5", TONE_CLASSES[step.tone])}>
         <span
           className="font-nunito text-[0.65rem] font-bold uppercase"
           style={{
@@ -947,11 +834,7 @@ function MobileTimelineNode({
 /*                              Shared content                                */
 /* -------------------------------------------------------------------------- */
 
-function StepEyebrow({
-  step,
-}: {
-  step: StoryStep;
-}) {
+function StepEyebrow({ step }: { step: StoryStep }) {
   return (
     <div className="flex items-center gap-3">
       <span

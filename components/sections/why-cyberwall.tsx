@@ -357,8 +357,6 @@ export default function WhyCyberwall() {
           </div>
         </Container>
       </section>
-
-      <CyberwallInterceptionStory />
     </>
   );
 }
