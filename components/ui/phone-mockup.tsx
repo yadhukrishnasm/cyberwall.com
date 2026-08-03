@@ -65,8 +65,7 @@ export function PhoneMockup() {
               {/* User message */}
               <div className="ml-auto max-w-[88%] rounded-lg rounded-tr-none bg-[#d9fdd3] px-2.5 py-2 shadow-sm">
                 <p className="text-[10px] leading-[1.4] text-neutral-800">
-                  I got a message saying my parcel is on hold and I have to pay
-                  ₹49 to release it. Is this real?
+                  Is this SBI KYC message genuine? - Dear Customer, your SBI account KYC will expire today. Update immediately at sbi-kycverify.in or your account will be suspended. For help call +91 8xxxx xxxx7
                 </p>
 
                 <div className="mt-1 flex items-center justify-end gap-1">
@@ -80,17 +79,16 @@ export function PhoneMockup() {
               {/* Main Cyberwall reply */}
               <div className="mr-auto max-w-[94%] rounded-lg rounded-tl-none bg-white px-2.5 py-2.5 shadow-sm">
                 <p className="text-[10px] text-neutral-800">
-                  The link you provided has a trust score of 38 out of 100. This
-                  is a low score, which means the website is dangerous and you
-                  should not trust it or share any information there.
+                  This message is a scam and you should definitely not interact with it. The website link you were sent has a trust score of 18 out of 100, which is very low and indicates it is dangerous. The site is not secure, has unknown origins, and is likely trying to steal your personal or banking information.
+
                 </p>
 
                 <p className="mt-2 text-[10px] text-neutral-800">
-                  The security system found that the website connection is not
-                  secure and it could be hiding malicious content. Because the
-                  site could not be fully verified, you should avoid entering
-                  any personal data, bank details, or OTPs. Please stay away
-                  from this link to keep your information safe.
+                  Please do not click the link, do not enter any details, and do not call the phone number provided. Banks like SBI will never ask you to update your KYC through an unofficial website link sent via text message.
+
+                </p>
+                <p className="mt-2 text-[10px] text-neutral-800">
+                  If you have already entered any information on that site, please call your bank immediately to block your account and card. Also, call the national cybercrime helpline at 1930 and report the incident at cybercrime.gov.in. You can use the /report command here for more official reporting contacts.
                 </p>
 
                 <p className="mt-1.5 text-right text-[7px] text-neutral-400">

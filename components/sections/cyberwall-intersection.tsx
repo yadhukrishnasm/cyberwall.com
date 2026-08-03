@@ -450,9 +450,6 @@ function DesktopTimelineStep({
 
   const cardRevealEnd = isLastStep ? step.revealAt : step.revealAt + 0.1;
 
-  const opacity = useTransform(progress, [revealStart, revealEnd], [0, 1]);
-
-  const nodeScale = useTransform(progress, [revealStart, revealEnd], [0.72, 1]);
 
   const cardOpacity = useTransform(
     progress,
@@ -472,7 +469,6 @@ function DesktopTimelineStep({
     [14, 0],
   );
 
-  const Icon = step.icon;
   const cardOnLeft = step.side === "left";
 
   return (
