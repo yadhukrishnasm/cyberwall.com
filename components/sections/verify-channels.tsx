@@ -36,7 +36,8 @@ const PLATFORMS = [
     icon: WhatsAppIcon,
     buttons: [{ label: "Chat on WhatsApp", href: whatsappHref, icon: null }],
     featured: true,
-    cardClass: "bg-whatsapp",
+    cardClass: "bg-whatsapp/30",
+    iconClass: "text-white",
     ctaClass: "bg-white text-whatsapp-deep",
   },
   {
@@ -119,7 +120,7 @@ export default function VerifyChannels() {
                     <span
                       className={cn(
                         "flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl p-2.5 shadow-sm",
-                        platform.featured ? "bg-white/25" : "bg-white",
+                        platform.featured ? "bg-whatsapp" : "bg-white",
                       )}
                     >
                       <platform.icon
@@ -132,20 +133,12 @@ export default function VerifyChannels() {
                     <div>
                       <span
                         className={cn(
-                          "font-nunito block text-xl font-bold",
-                          platform.featured ? "text-white" : "text-neutral-950",
+                          "font-nunito block text-xl font-bold text-neutral-950",
                         )}
                       >
                         {platform.name}
                       </span>
-                      <span
-                        className={cn(
-                          "text-sm",
-                          platform.featured
-                            ? "text-white/80"
-                            : "text-neutral-500",
-                        )}
-                      >
+                      <span className={cn("text-sm text-neutral-500")}>
                         {platform.detail}
                       </span>
                     </div>

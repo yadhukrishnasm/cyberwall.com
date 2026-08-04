@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { MenuIcon } from "@/components/icons";
 import { TryNowButton } from "@/components/ui/platform-modal";
 
@@ -13,9 +12,6 @@ const NAV_LINKS = [
 ];
 
 export function Navbar() {
-  const pathname = usePathname();
-  const isHome = pathname === "/";
-
   return (
     <header className="sticky top-0 z-40 px-3 pt-3">
       <div className="mx-auto flex h-fit w-full max-w-7xl items-center justify-between rounded-4xl border border-neutral-200/70 bg-white/80 pr-4.5 pl-4 py-2 shadow-sm shadow-neutral-950/5 backdrop-blur-xl md:pl-6">
@@ -33,16 +29,15 @@ export function Navbar() {
         </Link>
 
         <nav className="hidden items-center gap-7 md:flex">
-          {
-            NAV_LINKS.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className=" font-medium text-neutral-600 transition-colors hover:text-brand"
-              >
-                {link.label}
-              </a>
-            ))}
+          {NAV_LINKS.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              className=" font-medium text-neutral-600 transition-colors hover:text-brand"
+            >
+              {link.label}
+            </a>
+          ))}
           <Link
             href="/faq"
             className="text-sm font-medium text-neutral-600 transition-colors hover:text-brand"
@@ -61,16 +56,15 @@ export function Navbar() {
               <MenuIcon className="h-4.5 w-4.5" />
             </summary>
             <nav className="absolute top-12 right-0 z-50 flex w-52 flex-col gap-1 rounded-2xl border border-neutral-100 bg-white p-3 shadow-xl shadow-neutral-950/10">
-              {isHome &&
-                NAV_LINKS.map((link) => (
-                  <a
-                    key={link.href}
-                    href={link.href}
-                    className="rounded-xl px-3 py-2.5 text-base font-medium text-neutral-700 transition-colors hover:bg-tint-blue hover:text-brand"
-                  >
-                    {link.label}
-                  </a>
-                ))}
+              {NAV_LINKS.map((link) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  className="rounded-xl px-3 py-2.5 text-base font-medium text-neutral-700 transition-colors hover:bg-tint-blue hover:text-brand"
+                >
+                  {link.label}
+                </a>
+              ))}
               <Link
                 href="/faq"
                 className="rounded-xl px-3 py-2.5 text-base font-medium text-neutral-700 transition-colors hover:bg-tint-blue hover:text-brand"

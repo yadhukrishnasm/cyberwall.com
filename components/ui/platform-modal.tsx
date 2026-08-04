@@ -21,8 +21,10 @@ import { cn } from "@/lib/utils";
 export const PLATFORM_MODAL_ID = "platform-modal";
 
 function openPlatformModal() {
-  console.log("trying to open modal")
-  const dialog = document.getElementById(PLATFORM_MODAL_ID) as HTMLDialogElement | null;
+  console.log("trying to open modal");
+  const dialog = document.getElementById(
+    PLATFORM_MODAL_ID,
+  ) as HTMLDialogElement | null;
   dialog?.showModal();
 }
 
@@ -133,7 +135,9 @@ export function PlatformModal() {
           <button
             type="button"
             aria-label="Close"
-            onClick={(e) => (e.currentTarget.closest("dialog") as HTMLDialogElement)?.close()}
+            onClick={(e) =>
+              (e.currentTarget.closest("dialog") as HTMLDialogElement)?.close()
+            }
             className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white text-neutral-500 shadow-sm transition-colors hover:text-neutral-950"
           >
             <XIcon className="h-5 w-5" />
@@ -153,7 +157,7 @@ export function PlatformModal() {
                   (whatsapp/telegram/polapp example) when available. */}
               <div
                 className={cn(
-                  "hidden aspect-[9/16] w-16 shrink-0 items-center justify-center rounded-xl p-2 sm:flex",
+                  "hidden aspect-[14/16] w-16 shrink-0 items-center justify-center rounded-xl p-2 sm:flex",
                   platform.shotClass,
                 )}
               >
@@ -193,7 +197,6 @@ export function PlatformModal() {
 
               <div className="flex  flex-col gap-2">
                 {platform.buttons.map((button) => (
-
                   <a
                     key={button.label}
                     href={button.href}
@@ -206,7 +209,6 @@ export function PlatformModal() {
                         : platform.ctaClass,
                     )}
                   >
-
                     {button.icon && <button.icon className="h-4 w-4" />}
                     {button.label}
                   </a>
