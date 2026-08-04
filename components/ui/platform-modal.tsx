@@ -75,7 +75,7 @@ const PLATFORMS = [
   {
     name: "WhatsApp",
     icon: WhatsAppIcon,
-    copy: "Start checking immediately on the app you already use.",
+
     detail: whatsappNumber,
     buttons: [{ label: "Start Chat", href: whatsappHref, icon: null }],
     cardClass: "bg-whatsapp-tint border-whatsapp/40",
@@ -86,7 +86,7 @@ const PLATFORMS = [
   {
     name: "Telegram",
     icon: TelegramIcon,
-    copy: "Full Cyberwall experience, including larger files and APK verification.",
+
     detail: telegramHandle,
     buttons: [{ label: "Try on Telegram", href: telegramHref, icon: null }],
     cardClass: "bg-telegram-tint border-telegram/40",
@@ -97,7 +97,7 @@ const PLATFORMS = [
   {
     name: "PolApp",
     icon: PolAppLogo,
-    copy: "Built into the official Kerala Police PolApp.",
+
     detail: "iOS & Android",
     buttons: [
       { label: "App Store", href: polAppIosUrl, icon: AppleIcon },
@@ -149,70 +149,53 @@ export function PlatformModal() {
             <div
               key={platform.name}
               className={cn(
-                "flex flex-col gap-4 rounded-3xl border-2 p-5 sm:flex-row sm:items-center",
+                "rounded-3xl border-2 p-5 md:p-6",
                 platform.cardClass,
               )}
             >
-              {/* Screenshot slot — swap for the real product capture
-                  (whatsapp/telegram/polapp example) when available. */}
-              <div
-                className={cn(
-                  "hidden aspect-[14/16] w-16 shrink-0 items-center justify-center rounded-xl p-2 sm:flex",
-                  platform.shotClass,
-                )}
-              >
-                <platform.icon className="h-full w-full object-contain opacity-70" />
-              </div>
-
-              <span
-                className={cn(
-                  "flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl p-2 shadow-sm sm:hidden",
-                  platform.iconClass,
-                )}
-              >
-                <platform.icon className="h-full w-full object-contain" />
-              </span>
-
-              <div className="min-w-0 flex-1">
-                <div className="flex items-center gap-2">
-                  <span
+              <div className="flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
+                {/* Left */}
+                <div className="flex items-center gap-4">
+                  <div
                     className={cn(
-                      "hidden h-7 w-7 shrink-0 items-center justify-center rounded-lg p-1 sm:flex",
+                      "flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl p-2 shadow-sm",
                       platform.iconClass,
                     )}
                   >
                     <platform.icon className="h-full w-full object-contain" />
-                  </span>
-                  <span className="font-nunito text-lg font-bold text-neutral-950">
-                    {platform.name}
-                  </span>
-                </div>
-                <p className="mt-1 text-sm leading-relaxed text-neutral-600">
-                  {platform.copy}
-                </p>
-                <p className="mt-1 text-sm font-semibold text-neutral-800">
-                  {platform.detail}
-                </p>
-              </div>
+                  </div>
 
-              <div className="flex  flex-col gap-2">
-                {platform.buttons.map((button) => (
-                  <a
-                    key={button.label}
-                    href={button.href}
-                    target="_blank"
-                    rel="noreferrer"
-                    className={cn(
-                      "flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold transition-opacity hover:opacity-85",
-                      button.icon
-                        ? "bg-neutral-950 text-white"
-                        : platform.ctaClass,
-                    )}
-                  >
-                    {button.icon && <button.icon className="h-4 w-4" />}
-                    {button.label}
-                  </a>
-                ))}
+                  <div>
+                    <h3 className="font-nunito text-lg font-bold text-neutral-950">
+                      {platform.name}
+                    </h3>
+
+                    <p className="mt-1 text-sm font-medium text-neutral-700">
+                      {platform.detail}
+                    </p>
+                  </div>
+                </div>
+
+                {/* Right */}
+                <div className="flex w-full flex-col gap-2 md:w-auto md:min-w-[220px]">
+                  {platform.buttons.map((button) => (
+                    <a
+                      key={button.label}
+                      href={button.href}
+                      target="_blank"
+                      rel="noreferrer"
+                      className={cn(
+                        "flex items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-semibold transition-opacity hover:opacity-85",
+                        button.icon
+                          ? "bg-neutral-950 text-white"
+                          : platform.ctaClass,
+                      )}
+                    >
+                      {button.icon && <button.icon className="h-4 w-4" />}
+                      {button.label}
+                    </a>
+                  ))}
+                </div>
               </div>
             </div>
           ))}

@@ -35,19 +35,19 @@ const PLATFORMS = [
     detail: whatsappNumber,
     icon: WhatsAppIcon,
     buttons: [{ label: "Chat on WhatsApp", href: whatsappHref, icon: null }],
-    featured: true,
-    cardClass: "bg-whatsapp/30",
+    cardClass: "bg-whatsapp-tint ",
+    iconWrapperClass: "bg-whatsapp text-white",
     iconClass: "text-white",
-    ctaClass: "bg-white text-whatsapp-deep",
+    ctaClass: "bg-whatsapp-deep text-white",
   },
   {
     name: "Telegram",
     detail: "@Cyber_wall_bot",
     icon: TelegramIcon,
     buttons: [{ label: "Open in Telegram", href: telegramHref, icon: null }],
-    featured: false,
-    cardClass: "bg-telegram-tint",
-    iconClass: "text-telegram",
+    cardClass: "bg-telegram-tint ",
+    iconWrapperClass: "bg-telegram text-white",
+    iconClass: "text-white",
     ctaClass: "bg-telegram-deep text-white",
   },
   {
@@ -58,8 +58,8 @@ const PLATFORMS = [
       { label: "App Store", href: polAppIosUrl, icon: AppleIcon },
       { label: "Google Play", href: polAppAndroidUrl, icon: GooglePlayIcon },
     ],
-    featured: false,
-    cardClass: "bg-tint-lavender",
+    cardClass: "bg-tint-lavender ",
+    iconWrapperClass: "bg-white",
     iconClass: "",
     ctaClass: "bg-neutral-950 text-white",
   },
@@ -120,13 +120,13 @@ export default function VerifyChannels() {
                     <span
                       className={cn(
                         "flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl p-2.5 shadow-sm",
-                        platform.featured ? "bg-whatsapp" : "bg-white",
+                        platform.iconWrapperClass,
                       )}
                     >
                       <platform.icon
                         className={cn(
                           "h-full w-full object-contain",
-                          platform.featured ? "text-white" : platform.iconClass,
+                          platform.iconClass,
                         )}
                       />
                     </span>
