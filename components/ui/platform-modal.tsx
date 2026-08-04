@@ -21,6 +21,7 @@ import { cn } from "@/lib/utils";
 export const PLATFORM_MODAL_ID = "platform-modal";
 
 function openPlatformModal() {
+  console.log("trying to open modal")
   const dialog = document.getElementById(PLATFORM_MODAL_ID) as HTMLDialogElement | null;
   dialog?.showModal();
 }

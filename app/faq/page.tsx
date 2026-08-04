@@ -7,6 +7,7 @@ import { Container } from "@/components/ui/container";
 import { FaqItem } from "@/components/ui/faq-item";
 import { ALL_FAQS, FAQ_GROUPS } from "@/lib/faq-data";
 import { siteUrl } from "@/lib/site";
+import { PlatformModal } from "@/components/ui/platform-modal";
 
 const TITLE = "Cyberwall FAQ — Kerala Police's AI-Powered Digital Safety Assistant";
 const DESCRIPTION =
@@ -82,6 +83,7 @@ export default function FAQPage() {
         </Container>
       </main>
       <Footer />
+      <PlatformModal />
     </>
   );
 }

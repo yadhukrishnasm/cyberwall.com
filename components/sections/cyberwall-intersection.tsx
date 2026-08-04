@@ -257,7 +257,7 @@ const TONE_CLASSES: Record<StoryTone, string> = {
 
 export function CyberwallInterceptionStory() {
   return (
-    <section className="relative">
+    <section className="relative" id="how-it-works">
       <DesktopSectionHeading />
       <DesktopInterceptionStory />
       <MobileInterceptionStory />

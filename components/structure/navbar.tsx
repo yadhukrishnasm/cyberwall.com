@@ -7,9 +7,9 @@ import { MenuIcon } from "@/components/icons";
 import { TryNowButton } from "@/components/ui/platform-modal";
 
 const NAV_LINKS = [
-  { href: "#how-it-works", label: "How it Works" },
-  { href: "#engine", label: "Engine" },
-  { href: "#why-cyberwall", label: "Why Cyberwall" },
+  { href: "/#why-cyberwall", label: "Why Cyberwall" },
+  { href: "/#how-it-works", label: "How it Works" },
+  { href: "/#engine", label: "Engine" },
 ];
 
 export function Navbar() {
@@ -33,7 +33,7 @@ export function Navbar() {
         </Link>
 
         <nav className="hidden items-center gap-7 md:flex">
-          {isHome &&
+          {
             NAV_LINKS.map((link) => (
               <a
                 key={link.href}
