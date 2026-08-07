@@ -30,6 +30,8 @@ export default function Footer() {
                   alt="Cyberwall logo"
                   width={34}
                   height={30}
+                  loading="eager"
+                  priority
                 />
               </span>
               <span className="font-nunito text-2xl font-bold text-white">
@@ -49,6 +51,7 @@ export default function Footer() {
                   alt="Kerala Police logo"
                   width={26}
                   height={26}
+                  className="h-auto w-auto"
                 />
                 <span className="text-sm font-medium text-white/80">
                   A Public Safety Initiative
