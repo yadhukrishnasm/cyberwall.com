@@ -10,7 +10,11 @@ const NAV_LINKS = [
   { label: "FAQ", href: "/faq" },
 ];
 
-const LEGAL_LINKS = ["Privacy", "Terms", "Accessibility"];
+const LEGAL_LINKS = [
+  { label: "Privacy", href: "/policy" },
+  { label: "Terms", href: "/terms" },
+  { label: "Accessibility", href: "/accessibility" },
+];
 
 export default function Footer() {
   return (
@@ -79,7 +83,7 @@ export default function Footer() {
                 </span>
                 <ul className="mt-4 space-y-3">
                   <li>
-                    <a
+                    <Link
                       href={keralaPoliceUrl}
                       target="_blank"
                       rel="noreferrer"
@@ -87,13 +91,16 @@ export default function Footer() {
                     >
                       Kerala Police
                       <ArrowUpRightIcon className="h-4 w-4" />
-                    </a>
+                    </Link>
                   </li>
                   {LEGAL_LINKS.map((link) => (
-                    <li key={link}>
-                      <span className="text-base font-medium text-neutral-400">
-                        {link}
-                      </span>
+                    <li key={link.label}>
+                      <Link
+                        className="text-base font-medium text-neutral-600"
+                        href={link.href}
+                      >
+                        {link.label}
+                      </Link>
                     </li>
                   ))}
                 </ul>
@@ -105,15 +112,13 @@ export default function Footer() {
                 <strong className="font-semibold text-neutral-700">
                   Legal disclaimer.
                 </strong>{" "}
-                Cyberwall provides automated risk assessments based on
-                available digital signals. Results are advisory in nature and
-                should not be treated as final legal conclusions. Users should
-                exercise independent judgment before making financial
-                decisions.
+                Cyberwall provides automated risk assessments based on available
+                digital signals. Results are advisory in nature and should not
+                be treated as final legal conclusions. Users should exercise
+                independent judgment before making financial decisions.
               </p>
               <p className="mt-4 text-sm text-neutral-400">
-                © {new Date().getFullYear()} Kerala Police. All rights
-                reserved.
+                © {new Date().getFullYear()} Kerala Police. All rights reserved.
               </p>
             </div>
           </div>
