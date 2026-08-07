@@ -1,11 +1,9 @@
 import type { Metadata } from "next";
-import { headers } from "next/headers";
 import { Nunito } from "next/font/google";
 import "./globals.css";
 
 import { GoogleAnalytics } from "@/components/google-analytics";
 import { siteDescription, siteUrl } from "@/lib/site";
-import Script from "next/script";
 
 const ENTITY_SENTENCE = siteDescription;
 
@@ -83,39 +81,31 @@ const SERVICE_JSON_LD = {
   isAccessibleForFree: true,
 };
 
-export default async function RootLayout({
+export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const nonce = (await headers()).get("x-nonce") ?? "";
-
   return (
-    <html lang="en">
-      <body className={`${nunito.variable} font-sans`}>
+    <html lang="en" className={nunito.variable}>
+      <body className="min-h-screen font-sans text-neutral-950 antialiased">
         {children}
 
-        <Script
-          id="organization-jsonld"
-          nonce={nonce}
+        <script
           type="application/ld+json"
-          strategy="beforeInteractive"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(ORG_JSON_LD),
           }}
         />
 
-        <Script
-          id="service-jsonld"
-          nonce={nonce}
+        <script
           type="application/ld+json"
-          strategy="beforeInteractive"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(SERVICE_JSON_LD),
           }}
         />
 
-        <GoogleAnalytics nonce={nonce} />
+        <GoogleAnalytics />
       </body>
     </html>
   );
