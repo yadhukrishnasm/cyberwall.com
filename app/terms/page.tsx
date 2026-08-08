@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import { headers } from "next/headers";
 import Footer from "@/components/sections/footer";
 import { Navbar } from "@/components/structure/navbar";
+import { StructuredData } from "@/components/structured-data";
 import { Container } from "@/components/ui/container";
 import { siteUrl } from "@/lib/site";
 import { PlatformModal } from "@/components/ui/platform-modal";
@@ -25,6 +27,19 @@ export const metadata: Metadata = {
     card: "summary",
     title: TITLE,
     description: DESCRIPTION,
+  },
+};
+
+const PAGE_JSON_LD = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  name: TITLE,
+  description: DESCRIPTION,
+  url: `${siteUrl}/terms`,
+  isPartOf: {
+    "@type": "WebSite",
+    name: "Cyberwall",
+    url: siteUrl,
   },
 };
 
@@ -111,9 +126,12 @@ const SECTIONS = [
   },
 ];
 
-export default function TermsPage() {
+export default async function TermsPage() {
+  const nonce = (await headers()).get("x-nonce") ?? undefined;
+
   return (
     <>
+      <StructuredData data={PAGE_JSON_LD} nonce={nonce} />
       <Navbar />
       <main className="pt-16 pb-24 md:pt-20">
         <Container>

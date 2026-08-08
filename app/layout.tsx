@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Nunito } from "next/font/google";
+import { headers } from "next/headers";
 import "./globals.css";
 
 import { GoogleAnalytics } from "@/components/google-analytics";
@@ -81,17 +82,20 @@ const SERVICE_JSON_LD = {
   isAccessibleForFree: true,
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const nonce = (await headers()).get("x-nonce") ?? undefined;
+
   return (
     <html lang="en" className={nunito.variable}>
       <body className="min-h-screen font-sans text-neutral-950 antialiased">
         {children}
 
         <script
+          nonce={nonce}
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(ORG_JSON_LD),
@@ -99,13 +103,14 @@ export default function RootLayout({
         />
 
         <script
+          nonce={nonce}
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(SERVICE_JSON_LD),
           }}
         />
 
-        <GoogleAnalytics />
+        <GoogleAnalytics nonce={nonce} />
       </body>
     </html>
   );

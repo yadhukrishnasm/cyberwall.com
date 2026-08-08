@@ -99,7 +99,7 @@ export default function Footer() {
                   {LEGAL_LINKS.map((link) => (
                     <li key={link.label}>
                       <Link
-                        className="text-base font-medium text-neutral-600"
+                        className="text-base font-medium text-neutral-700 transition-colors hover:text-brand"
                         href={link.href}
                       >
                         {link.label}

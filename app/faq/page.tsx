@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { headers } from "next/headers";
 
 import Footer from "@/components/sections/footer";
 import { Navbar } from "@/components/structure/navbar";
@@ -9,7 +10,8 @@ import { ALL_FAQS, FAQ_GROUPS } from "@/lib/faq-data";
 import { siteUrl } from "@/lib/site";
 import { PlatformModal } from "@/components/ui/platform-modal";
 
-const TITLE = "Cyberwall FAQ — Kerala Police's AI-Powered Digital Safety Assistant";
+const TITLE =
+  "Cyberwall FAQ — Kerala Police's AI-Powered Digital Safety Assistant";
 const DESCRIPTION =
   "Answers about what Cyberwall does, how it works, whether it's free, and what to do if you've already lost money to a scam.";
 
@@ -47,10 +49,12 @@ const FAQ_JSON_LD = {
   })),
 };
 
-export default function FAQPage() {
+export default async function FAQPage() {
+  const nonce = (await headers()).get("x-nonce") ?? undefined;
+
   return (
     <>
-      <StructuredData data={FAQ_JSON_LD} />
+      <StructuredData data={FAQ_JSON_LD} nonce={nonce} />
       <Navbar />
       <main className="pt-16 pb-24 md:pt-20">
         <Container>

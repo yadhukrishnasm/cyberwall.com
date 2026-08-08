@@ -11,6 +11,7 @@ import VerifyChannels from "@/components/sections/verify-channels";
 import WhatCanISend from "@/components/sections/what-can-i-send";
 import WhyCyberwall from "@/components/sections/why-cyberwall";
 import { Navbar } from "@/components/structure/navbar";
+import { headers } from "next/headers";
 import { StructuredData } from "@/components/structured-data";
 import { PlatformModal } from "@/components/ui/platform-modal";
 import { siteUrl, siteName, siteDescription } from "@/lib/site";
@@ -23,10 +24,11 @@ const WEBSITE_JSON_LD = {
   description: siteDescription,
 };
 
-export default function HomePage() {
+export default async function HomePage() {
+  const nonce = (await headers()).get("x-nonce") ?? undefined;
   return (
     <>
-      <StructuredData data={WEBSITE_JSON_LD} />
+      <StructuredData data={WEBSITE_JSON_LD} nonce={nonce} />
       <Navbar />
       <main>
         <Hero />
