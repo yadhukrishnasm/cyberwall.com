@@ -14,17 +14,17 @@
     --color-ink: #0a0a0a;
 
     /* Logo spectrum */
-    --color-brand: #2F67F6;
-    --color-brand-deep: #2555D8;
-    --color-cyan: #32C4F0;
+    --color-brand: #2f67f6;
+    --color-brand-deep: #2555d8;
+    --color-cyan: #32c4f0;
 
     /* Accent alias */
-    --color-accent: #3B6EF5;
+    --color-accent: #3b6ef5;
 
     /* Soft card tints */
-    --color-tint-blue: #EAF1FF;
-    --color-tint-cyan: #E8FAFF;
-    --color-tint-lavender: #F0ECFF;
+    --color-tint-blue: #eaf1ff;
+    --color-tint-cyan: #e8faff;
+    --color-tint-lavender: #f0ecff;
 
     /* Platform brand colors */
     --color-whatsapp: #25d366;
@@ -46,8 +46,8 @@
     /* Status colors (flow diagram, trust score, emergency) */
     --color-flow-amber-bg: #fef3c7;
     --color-flow-amber-border: #f59e0b;
-    --color-flow-blue-bg: #EAF1FF;
-    --color-flow-blue-border: #3B6EF5;
+    --color-flow-blue-bg: #eaf1ff;
+    --color-flow-blue-border: #3b6ef5;
     --color-flow-green-bg: #ecfdf5;
     --color-flow-green-border: #10b981;
     --color-flow-red-bg: #fef2f2;
@@ -65,7 +65,7 @@ body {
 }
 
 html {
-    scroll-behavior: smooth;
+    scroll-behavior: auto;
     scroll-padding-top: 6rem;
 }
 

@@ -141,6 +141,20 @@ type TimelineGeometry = {
   height: number;
 };
 
+function useStyleVars<T extends HTMLElement | SVGElement>(
+  ref: RefObject<T | null>,
+  vars: Record<string, string | number | undefined>,
+) {
+  useLayoutEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    for (const [prop, value] of Object.entries(vars)) {
+      if (value === undefined) continue;
+      (el.style as unknown as Record<string, string>)[prop] = String(value);
+    }
+  });
+}
+
 /* -------------------------------------------------------------------------- */
 /*                              Custom final icon                             */
 /* -------------------------------------------------------------------------- */
@@ -429,6 +443,16 @@ function DesktopTimelineStep({
   index: number;
   progress: MotionValue<number>;
 }) {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const labelRef = useRef<HTMLSpanElement>(null);
+
+  useStyleVars(containerRef, {
+    left: `${step.x}%`,
+    top: `${step.y}%`,
+    transform: "translate(-50%, -50%)",
+  });
+
+  useStyleVars(labelRef, { color: step.accent });
   const isLastStep = index === STORY_STEPS.length - 1;
 
   /**
@@ -449,7 +473,6 @@ function DesktopTimelineStep({
     : step.revealAt - 0.02;
 
   const cardRevealEnd = isLastStep ? step.revealAt : step.revealAt + 0.1;
-
 
   const cardOpacity = useTransform(
     progress,
@@ -472,22 +495,15 @@ function DesktopTimelineStep({
   const cardOnLeft = step.side === "left";
 
   return (
-    <div
-      className="absolute z-10"
-      style={{
-        left: `${step.x}%`,
-        top: `${step.y}%`,
-        transform: "translate(-50%, -50%)",
-      }}
-    >
+    <div ref={containerRef} className="absolute z-10">
       <span
-        className="pointer-events-none absolute left-1/2 top-1/2 -z-10 select-none font-nunito text-[5.25rem] font-black leading-none xl:text-[9rem]"
-        style={{
-          color: step.accent,
-          opacity: 0.45,
-          transform:
-            index % 2 === 0 ? "translate(-18%, -66%)" : "translate(-89%, -40%)",
-        }}
+        ref={labelRef}
+        className={cn(
+          "pointer-events-none absolute left-1/2 top-1/2 -z-10 select-none font-nunito text-[5.25rem] font-black leading-none opacity-45 xl:text-[9rem]",
+          index % 2 === 0
+            ? "[transform:translate(-18%,-66%)]"
+            : "[transform:translate(-89%,-40%)]",
+        )}
       >
         {step.label}
       </span>
@@ -689,16 +705,13 @@ function MobileTimelineLine({
   height: number;
   progress: MotionValue<number>;
 }) {
-  if (height <= 0) {
-    return null;
-  }
+  const svgRef = useRef<SVGSVGElement>(null);
 
-  /**
-   * Centres the SVG canvas on the mobile node.
-   *
-   * The node starts at left: 0 and has width MOBILE_NODE_SIZE.
-   */
   const left = MOBILE_NODE_SIZE / 2 - MOBILE_LINE_WIDTH / 2;
+
+  useStyleVars(svgRef, { left, top, width: MOBILE_LINE_WIDTH, height });
+
+  if (height <= 0) return null;
 
   /**
    * The visible line is centred within the SVG canvas.
@@ -707,13 +720,8 @@ function MobileTimelineLine({
 
   return (
     <svg
+      ref={svgRef}
       className="pointer-events-none absolute z-0 overflow-visible"
-      style={{
-        left,
-        top,
-        width: MOBILE_LINE_WIDTH,
-        height,
-      }}
       viewBox={`0 0 ${MOBILE_LINE_WIDTH} ${height}`}
       preserveAspectRatio="none"
       aria-hidden="true"
@@ -813,13 +821,18 @@ function MobileTimelineNode({
   accent: string;
   icon: StoryIcon;
 }) {
+  const innerRef = useRef<HTMLDivElement>(null);
+  const setRefs = (node: HTMLDivElement | null) => {
+    innerRef.current = node;
+    if (ref) ref.current = node;
+  };
+
+  useStyleVars(innerRef, { backgroundColor: accent });
+
   return (
     <div
-      ref={ref}
-      className="absolute left-0 top-5 z-10 flex h-10 w-10 items-center justify-center rounded-xl  shadow-[0_10px_28px_rgba(15,23,42,0.14)]"
-      style={{
-        backgroundColor: accent,
-      }}
+      ref={setRefs}
+      className="absolute left-0 top-5 z-10 flex h-10 w-10 items-center justify-center rounded-xl shadow-[0_10px_28px_rgba(15,23,42,0.14)]"
     >
       <Icon className="h-4 w-4 text-white" />
     </div>
@@ -831,18 +844,21 @@ function MobileTimelineNode({
 /* -------------------------------------------------------------------------- */
 
 function StepEyebrow({ step }: { step: StoryStep }) {
+  const ref = useRef<HTMLSpanElement>(null);
+
+  useStyleVars(ref, {
+    color: step.accent,
+    backgroundColor: `${step.accent}12`,
+  });
+
   return (
     <div className="flex items-center gap-3">
       <span
-        className="whitespace-nowrap rounded-full px-2.5 py-1 font-nunito text-xs font-medium "
-        style={{
-          color: step.accent,
-          backgroundColor: `${step.accent}12`,
-        }}
+        ref={ref}
+        className="whitespace-nowrap rounded-full px-2.5 py-1 font-nunito text-xs font-medium"
       >
         {step.label} · {step.eyebrow}
       </span>
-
       <span className="h-px min-w-4 flex-1 bg-gradient-to-r from-neutral-200 to-transparent" />
     </div>
   );
