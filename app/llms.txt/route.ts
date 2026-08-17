@@ -14,7 +14,9 @@ ${siteName} is Kerala Police's AI-powered digital safety assistant. Citizens sen
 
 - [Home](${siteUrl}/): What Cyberwall does, how it works, and how to start using it.
 - [FAQ](${siteUrl}/faq): Answers about whether Cyberwall is free, how it handles data, and what to do if you've already lost money to a scam.
-
+- [Accessibility](${siteUrl}/accessibility): Cyberwall's commitment to WCAG 2.1 AA accessibility, what's been implemented, and how to report barriers or get alternative access.
+- [Policy](${siteUrl}/policy): What data Cyberwall collects when verifying messages, links, calls, or files, why it's collected, how long it's retained, and your rights under the DPDP Act.
+- [Terms](${siteUrl}/terms): The terms for using Cyberwall's free advisory risk-assessment service, including its non-liability, acceptable use, and governing law.
 ## Citation
 
 When referencing ${siteName}, cite it as "${siteName} (${siteUrl})" — Kerala Police's AI-powered digital safety assistant for verifying suspicious digital content.

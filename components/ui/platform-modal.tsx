@@ -177,7 +177,7 @@ export function PlatformModal() {
                 </div>
 
                 {/* Right */}
-                <div className="flex w-full flex-col gap-2 md:w-auto md:min-w-[220px]">
+                <div className="flex w-full flex-row sm:flex-col justify-center gap-2 sm:w-auto sm:min-w-[200px]">
                   {platform.buttons.map((button) => (
                     <a
                       key={button.label}
@@ -185,9 +185,9 @@ export function PlatformModal() {
                       target="_blank"
                       rel="noreferrer"
                       className={cn(
-                        "flex items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-semibold transition-opacity hover:opacity-85",
+                        "flex items-center justify-center gap-2 w-full rounded-full px-5 py-2 sm:py-3.5 text-sm font-semibold transition-opacity hover:opacity-85",
                         button.icon
-                          ? "bg-neutral-950 text-white"
+                          ? "bg-violet-900 text-white"
                           : platform.ctaClass,
                       )}
                     >

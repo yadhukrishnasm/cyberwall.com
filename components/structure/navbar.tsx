@@ -1,7 +1,7 @@
 "use client";
-
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { MenuIcon } from "@/components/icons";
 import { TryNowButton } from "@/components/ui/platform-modal";
 
@@ -12,6 +12,9 @@ const NAV_LINKS = [
 ];
 
 export function Navbar() {
+  const pathname = usePathname();
+  const hideTryNow = pathname === "/try";
+
   return (
     <header className="sticky top-0 z-40 px-3 pt-3">
       <div className="mx-auto flex h-fit w-full max-w-7xl items-center justify-between rounded-4xl border border-neutral-200/70 bg-white/80 pr-4.5 pl-4 py-2 shadow-sm shadow-neutral-950/5 backdrop-blur-xl md:pl-6">
@@ -27,7 +30,6 @@ export function Navbar() {
             Cyberwall
           </span>*/}
         </Link>
-
         <nav className="hidden items-center gap-7 md:flex">
           {NAV_LINKS.map((link) => (
             <a
@@ -45,12 +47,12 @@ export function Navbar() {
             FAQ
           </Link>
         </nav>
-
         <div className="flex items-center gap-2">
-          <TryNowButton className=" !px-4 !py-2 !text-sm !shadow-sm">
-            Try Now
-          </TryNowButton>
-
+          {!hideTryNow && (
+            <TryNowButton className=" !px-4 !py-2 !text-sm !shadow-sm">
+              Try Now
+            </TryNowButton>
+          )}
           <details className="relative md:hidden">
             <summary className="flex h-9 w-9 cursor-pointer list-none items-center justify-center rounded-full bg-tint-blue text-brand marker:content-none">
               <MenuIcon className="h-4.5 w-4.5" />
