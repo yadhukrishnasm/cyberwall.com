@@ -44,6 +44,11 @@ export function proxy(request: NextRequest) {
     });
   }
 
+  // Redirect everything except /comingsoon itself there.
+  if (request.nextUrl.pathname !== "/comingsoon") {
+    return NextResponse.redirect(new URL("/comingsoon", request.url));
+  }
+
   // Generate a cryptographically random nonce for this request.
   const nonce = Buffer.from(crypto.randomUUID()).toString("base64");
 
@@ -107,6 +112,10 @@ export function proxy(request: NextRequest) {
   return response;
 }
 
+export const middleware = proxy;
+
 export const config = {
-  matcher: ["/((?!api|_next/static|_next/image|favicon.ico).*)"],
+  matcher: [
+    "/((?!api|_next/static|_next/image|favicon.ico|.*\\.(?:png|jpg|jpeg|gif|svg|webp|ico|css|js|woff|woff2|ttf)$).*)",
+  ],
 };
