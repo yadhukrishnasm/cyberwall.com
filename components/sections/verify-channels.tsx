@@ -34,7 +34,9 @@ const PLATFORMS = [
     name: "WhatsApp",
     detail: whatsappNumber,
     icon: WhatsAppIcon,
-    buttons: [{ label: "Chat on WhatsApp", href: whatsappHref, icon: null }],
+    buttons: [
+      { label: "Chat on WhatsApp", href: whatsappHref, icon: WhatsAppIcon },
+    ],
     cardClass: "bg-whatsapp-tint ",
     iconWrapperClass: "bg-whatsapp text-white",
     iconClass: "text-white",
@@ -44,7 +46,9 @@ const PLATFORMS = [
     name: "Telegram",
     detail: "@Cyber_wall_bot",
     icon: TelegramIcon,
-    buttons: [{ label: "Open in Telegram", href: telegramHref, icon: null }],
+    buttons: [
+      { label: "Open in Telegram", href: telegramHref, icon: TelegramIcon },
+    ],
     cardClass: "bg-telegram-tint ",
     iconWrapperClass: "bg-telegram text-white",
     iconClass: "text-white",
@@ -61,7 +65,7 @@ const PLATFORMS = [
     cardClass: "bg-tint-lavender ",
     iconWrapperClass: "bg-white",
     iconClass: "",
-    ctaClass: "bg-neutral-950 text-white",
+    ctaClass: "bg-violet-900 text-white",
   },
 ];
 
@@ -152,9 +156,7 @@ export default function VerifyChannels() {
                         rel="noreferrer"
                         className={cn(
                           "flex flex-1 shrink-0 items-center justify-center gap-2 rounded-full px-5 py-3 text-center text-sm font-semibold transition-opacity hover:opacity-85 sm:flex-none",
-                          button.icon
-                            ? "bg-neutral-950 text-white"
-                            : platform.ctaClass,
+                          platform.ctaClass,
                         )}
                       >
                         {button.icon && <button.icon className="h-4 w-4" />}

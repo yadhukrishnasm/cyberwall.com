@@ -38,7 +38,7 @@ const PLATFORMS = [
     icon: WhatsAppIcon,
     detail: whatsappNumber,
     blurb: "Chat like you normally would. No app download needed.",
-    buttons: [{ label: "Start Chat", href: whatsappHref, icon: null }],
+    buttons: [{ label: "Start Chat", href: whatsappHref, icon: WhatsAppIcon }],
     cardClass: "bg-whatsapp-tint border-whatsapp/40",
     iconClass: "bg-whatsapp text-white",
     ctaClass: "bg-whatsapp-deep text-white",
@@ -48,7 +48,9 @@ const PLATFORMS = [
     icon: TelegramIcon,
     detail: telegramHandle,
     blurb: "Message the bot directly, works on desktop and mobile.",
-    buttons: [{ label: "Try on Telegram", href: telegramHref, icon: null }],
+    buttons: [
+      { label: "Try on Telegram", href: telegramHref, icon: TelegramIcon },
+    ],
     cardClass: "bg-telegram-tint border-telegram/40",
     iconClass: "bg-telegram text-white",
     ctaClass: "bg-telegram-deep text-white",
@@ -64,7 +66,7 @@ const PLATFORMS = [
     ],
     cardClass: "bg-tint-lavender border-brand/30",
     iconClass: "bg-white",
-    ctaClass: "bg-neutral-950 text-white",
+    ctaClass: "bg-violet-900 text-white",
   },
 ];
 
@@ -96,6 +98,7 @@ export default function TryPage() {
                     priority
                   />
                 </span>
+
                 <span className="font-nunito text-xs font-semibold text-neutral-700 sm:text-sm">
                   Official Kerala Police Initiative
                 </span>
@@ -104,14 +107,13 @@ export default function TryPage() {
 
             <Reveal delay={120}>
               <h1 className="mx-auto mt-6 font-nunito text-4xl leading-[1.05] font-bold tracking-[-0.03em] text-neutral-950 sm:text-5xl">
-                Choose how you&apos;d like to verify
+                Available on three platforms
               </h1>
             </Reveal>
 
             <Reveal delay={200}>
               <p className="mx-auto mt-4 max-w-md text-base leading-relaxed text-neutral-500 sm:text-lg">
-                Pick whichever app you&apos;re comfortable with. Cyberwall works
-                the same on all three.
+                Choose the one that works best for you.
               </p>
             </Reveal>
           </div>
@@ -144,16 +146,18 @@ export default function TryPage() {
                             {platform.name}
                           </h3>
                         </div>
+
                         <p className="mt-1 text-sm font-medium text-neutral-700">
                           {platform.detail}
                         </p>
+
                         <p className="mt-1 text-sm text-neutral-500">
                           {platform.blurb}
                         </p>
                       </div>
                     </div>
 
-                    <div className="flex w-full flex-row sm:flex-col justify-center gap-2 sm:w-auto sm:min-w-[200px]">
+                    <div className="flex w-full flex-row justify-center gap-2 sm:w-auto sm:min-w-[200px] sm:flex-col">
                       {platform.buttons.map((button) => (
                         <a
                           key={button.label}
@@ -161,10 +165,8 @@ export default function TryPage() {
                           target="_blank"
                           rel="noreferrer"
                           className={cn(
-                            "flex items-center justify-center gap-2 rounded-full px-5 py-3.5 text-sm font-semibold transition-opacity hover:opacity-85",
-                            button.icon
-                              ? "bg-violet-900 text-white"
-                              : platform.ctaClass,
+                            "flex items-center justify-center gap-2 rounded-full px-5 py-3.5 text-sm font-semibold transition-opacity hover:opacity-85 w-full",
+                            platform.ctaClass,
                           )}
                         >
                           {button.icon && <button.icon className="h-4 w-4" />}
