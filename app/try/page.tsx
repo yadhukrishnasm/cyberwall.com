@@ -182,9 +182,9 @@ export default function TryPage() {
 
           <Reveal delay={280 + PLATFORMS.length * 120 + 100}>
             <p className="mx-auto mt-10 max-w-md text-center text-sm text-neutral-500">
-              CyberWall uses AI and cybercrime data for analysis. Results may be
-              incorrect. Click here to share feedback and help improve
-              CyberWall.
+              Cyberwall uses AI and cybercrime data for analysis. Results may be
+              incorrect. Help us improve by sharing your feedback through the
+              Cyberwall bot.
             </p>
           </Reveal>
         </Container>
