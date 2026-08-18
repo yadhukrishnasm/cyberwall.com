@@ -3,7 +3,6 @@ import { Nunito } from "next/font/google";
 import { headers } from "next/headers";
 import "./globals.css";
 
-import { GoogleAnalytics } from "@/components/google-analytics";
 import { siteDescription, siteUrl } from "@/lib/site";
 
 const ENTITY_SENTENCE = siteDescription;
@@ -109,8 +108,6 @@ export default async function RootLayout({
             __html: JSON.stringify(SERVICE_JSON_LD),
           }}
         />
-
-        <GoogleAnalytics nonce={nonce} />
       </body>
     </html>
   );
