@@ -1,6 +1,6 @@
 export const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ||
-  "https://cyberwall.nysaclan.com";
+  "https://cyberwall.keralapolice.gov.in";
 
 export const siteName = "cyberwall";
 
